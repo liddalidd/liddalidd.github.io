@@ -28,7 +28,7 @@
 <meta property="og:description" content="Course summary for Introduction to Statistics  Outline: Summary statistics Probability Random variables Proportion hypothesis tests 5. Mean hypothesis tests Goodness-of-fit tests Confidence intervals">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-11T08:29:59.000Z">
-<meta property="article:modified_time" content="2020-11-11T09:09:56.476Z">
+<meta property="article:modified_time" content="2020-11-23T13:40:13.637Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="Statistics">
 <meta name="twitter:card" content="summary">
@@ -190,10 +190,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-11-11 16:29:59 / Modified: 17:09:56" itemprop="dateCreated datePublished" datetime="2020-11-11T16:29:59+08:00">2020-11-11</time>
+              <time title="Created: 2020-11-11 16:29:59" itemprop="dateCreated datePublished" datetime="2020-11-11T16:29:59+08:00">2020-11-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-23 21:40:13" itemprop="dateModified" datetime="2020-11-23T21:40:13+08:00">2020-11-23</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -237,6 +243,30 @@
 <li>Bayesian statistics</li>
 <li>Extra Revision</li>
 </ol>
+<h2 id="population-and-sample"><a href="#population-and-sample" class="headerlink" title="population and sample"></a>population and sample</h2><ul>
+<li>population</li>
+<li>sample</li>
+</ul>
+<h3 id="Bias"><a href="#Bias" class="headerlink" title="Bias"></a>Bias</h3><ul>
+<li>types:<br>  selection bias<br>  measurement bias<br>  response bias<br>  confounding</li>
+</ul>
+<h3 id="Study-design"><a href="#Study-design" class="headerlink" title="Study design"></a>Study design</h3><ul>
+<li>types:<br>  observational study -&gt; infer association<br>  experimental study -&gt; infer causation</li>
+</ul>
+<h3 id="Variable-types"><a href="#Variable-types" class="headerlink" title="Variable types"></a>Variable types</h3><p>numerical/quantitative<br>    discrete<br>    continuous<br>categorical/qualitative<br>    ordinal<br>    nominal<br>        binary</p>
+<h3 id="Summaries-for-centre"><a href="#Summaries-for-centre" class="headerlink" title="Summaries for centre"></a>Summaries for centre</h3><ul>
+<li>mean (\miu x)</li>
+<li><p>median (\hat x)<br>  left skewed: mean<median
+  right skewed: mean>median</p>
+</li>
+<li><p>variance (Var(x))</p>
+</li>
+<li>standard deviation (sd(x))</li>
+<li>quartiles (IQR)<br>  lower threshold: LT=Q1-1.5IQR<br>  upper threshold: UT=Q3+1.5IQR<br>  outlier : outsid [LT,UT]<br>  interquartile range: IQR=Q3-Q1</li>
+<li>mean absolute deviation(MAD)<br>  $MAD=\frac{1}{n}\sum_{i=1}^n\lvert x_i-\overline{x}\rvert$</li>
+<li>mean square error (MSE)<br>  $MSE=\frac{1}{n}\sum_{i=1}^n(x_i-\overline{x})^2$</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"># read data in csv </span><br><span class="line">data&#x3D;read.csv(&quot;XX.csv&quot;,header&#x3D;T)</span><br><span class="line"># get dimension of data</span><br><span class="line">dim(data)  </span><br><span class="line"># list all variables</span><br><span class="line">names(data)</span><br><span class="line">colnames(data)</span><br><span class="line"># extract 1st row</span><br><span class="line">data[1,]</span><br><span class="line"># list first 3 rows</span><br><span class="line">head(data,3)</span><br><span class="line"># the way R stroed the data</span><br><span class="line">class(data)</span><br><span class="line">str(data)</span><br><span class="line">#</span><br><span class="line">table(data)</span><br><span class="line"></span><br><span class="line"># summaries </span><br><span class="line">mean(data)</span><br><span class="line">median(data)</span><br><span class="line">var(data)</span><br><span class="line">sd(data)</span><br><span class="line">fivenum(data)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># plot</span><br><span class="line">barplot(table(data))</span><br><span class="line">plot(table(data))</span><br><span class="line">boxplot(data,horizontal&#x3D;T&#x2F;F)</span><br><span class="line">hist(data,xlab&#x3D;&quot;&quot;,main&#x3D;&quot;&quot;)</span><br><span class="line"># add a line</span><br><span class="line">abline()</span><br><span class="line">summary(data)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -320,7 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Outline"><span class="nav-number">1.</span> <span class="nav-text">Outline:</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Outline"><span class="nav-number">1.</span> <span class="nav-text">Outline:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#population-and-sample"><span class="nav-number"></span> <span class="nav-text">population and sample</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bias"><span class="nav-number">1.</span> <span class="nav-text">Bias</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Study-design"><span class="nav-number">2.</span> <span class="nav-text">Study design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Variable-types"><span class="nav-number">3.</span> <span class="nav-text">Variable types</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Summaries-for-centre"><span class="nav-number">4.</span> <span class="nav-text">Summaries for centre</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -334,7 +364,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -459,6 +489,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
