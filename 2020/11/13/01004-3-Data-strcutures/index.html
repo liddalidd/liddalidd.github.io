@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="Data Structures IAbstract Data Types (ADT) ArrayArray-based Lists table th:first-of-type {     width: 4cm; } table th:nth-of-type(2) {     width:  4cm; }       Method Time     get( ) 𝑂(1)   set( ) O(">
+<meta property="og:type" content="article">
 <meta property="og:title" content="01004-3:Data strcutures">
 <meta property="og:url" content="http://example.com/2020/11/13/01004-3-Data-strcutures/index.html">
 <meta property="og:site_name" content="Dong">
+<meta property="og:description" content="Data Structures IAbstract Data Types (ADT) ArrayArray-based Lists table th:first-of-type {     width: 4cm; } table th:nth-of-type(2) {     width:  4cm; }       Method Time     get( ) 𝑂(1)   set( ) O(">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-13T06:11:34.000Z">
-<meta property="article:modified_time" content="2020-11-13T06:33:51.168Z">
+<meta property="article:modified_time" content="2020-12-04T16:11:40.820Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="Algorithm">
 <meta name="twitter:card" content="summary">
@@ -188,10 +190,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-11-13 14:11:34 / Modified: 14:33:51" itemprop="dateCreated datePublished" datetime="2020-11-13T14:11:34+08:00">2020-11-13</time>
+              <time title="Created: 2020-11-13 14:11:34" itemprop="dateCreated datePublished" datetime="2020-11-13T14:11:34+08:00">2020-11-13</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-05 00:11:40" itemprop="dateModified" datetime="2020-12-05T00:11:40+08:00">2020-12-05</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -220,7 +228,208 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Data-Structures-I"><a href="#Data-Structures-I" class="headerlink" title="Data Structures I"></a>Data Structures I</h1><p>Abstract Data Types (ADT)</p>
+<h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><h3 id="Array-based-Lists"><a href="#Array-based-Lists" class="headerlink" title="Array-based Lists"></a>Array-based Lists</h3><style>
+table th:first-of-type {
+    width: 4cm;
+}
+table th:nth-of-type(2) {
+    width:  4cm;
+}
+</style>
+
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Method</th>
+<th style="text-align:right">Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">get( )</td>
+<td style="text-align:right">𝑂(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">set( )</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">add( )</td>
+<td style="text-align:right">O(n)</td>
+</tr>
+<tr>
+<td style="text-align:right">remove( )</td>
+<td style="text-align:right">O(n)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Linked-list"><a href="#Linked-list" class="headerlink" title="Linked list"></a>Linked list</h2><h3 id="Singly-Linked-List"><a href="#Singly-Linked-List" class="headerlink" title="Singly Linked List"></a>Singly Linked List</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Method</th>
+<th style="text-align:right">Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">insertFirst(e)</td>
+<td style="text-align:right">𝑂(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">removeFirst()</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">insertBefore(p,e)</td>
+<td style="text-align:right">O(n)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Doubly-Linked-Lists"><a href="#Doubly-Linked-Lists" class="headerlink" title="Doubly Linked Lists"></a>Doubly Linked Lists</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Method</th>
+<th style="text-align:right">Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">first()</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">last()</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">before(p)</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">after(p)</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">insert_before(p, e)</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">insert_after(p, e)</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">remove(p)</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">size()</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+<tr>
+<td style="text-align:right">is_empty()</td>
+<td style="text-align:right">O(1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><p>last-in-first-out (LIFO)<br>Each operation runs in time O(1)</p>
+<ul>
+<li>push(e): inserts an element, e</li>
+<li>pop(): removes and returns the last inserted element</li>
+</ul>
+<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p>first-in-first-out (FIFO)</p>
+<ul>
+<li>enqueue(e): inserts an element, e, at the end of the queue</li>
+<li>dequeue(): removes and returns element at the front of the queue</li>
+</ul>
+<h3 id="Priority-Queue-ADT"><a href="#Priority-Queue-ADT" class="headerlink" title="Priority Queue ADT"></a>Priority Queue ADT</h3><h4 id="Selection-Sort"><a href="#Selection-Sort" class="headerlink" title="Selection-Sort"></a>Selection-Sort</h4><ol>
+<li>inserting elements with n insert operations takes O(n) time</li>
+<li>removing elements with n remove_min operations takes O(n2)</li>
+</ol>
+<h4 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion-Sort"></a>Insertion-Sort</h4><ol>
+<li>inserting elements with n insert operations takes O(n2) time </li>
+<li>removing elements with n remove_min operations takes O(n)</li>
+</ol>
+<h2 id="Heap-min-heap"><a href="#Heap-min-heap" class="headerlink" title="Heap (min-heap)"></a>Heap (min-heap)</h2><p>Heap-Order: for every node m ≠ root, $key(m)\geq key(parent(m))$<br>A heap storing n keys has height log n</p>
+<ul>
+<li>Insertion  O(log n)</li>
+<li>Removal  O(log n)</li>
+</ul>
+<h3 id="Heap-Sort"><a href="#Heap-Sort" class="headerlink" title="Heap-Sort"></a>Heap-Sort</h3><p>the version of priority-queue sorting that implements the priority queue with a heap. It runs in O(n log n) time.</p>
+<h2 id="Trees"><a href="#Trees" class="headerlink" title="Trees"></a>Trees</h2><h3 id="Tree-Terminology"><a href="#Tree-Terminology" class="headerlink" title="Tree Terminology"></a>Tree Terminology</h3><ul>
+<li>Depth of a node:number of ancestors not including itself </li>
+<li>Level: set of nodes with given depth</li>
+<li>Height of a tree: maximum depth</li>
+</ul>
+<h3 id="Traversing-trees"><a href="#Traversing-trees" class="headerlink" title="Traversing trees"></a>Traversing trees</h3><ul>
+<li>pre-order<br>  father-son1-son2<br>  <em>on the left</em></li>
+<li>post-order<br>  son1-son2-father<br>  <em>on the right</em></li>
+<li>in-order (for binary trees)<br>  left son-father-right son<br>  <em>from below</em></li>
+</ul>
+<h3 id="Binary-Search-Tree-BST"><a href="#Binary-Search-Tree-BST" class="headerlink" title="Binary Search Tree (BST)"></a>Binary Search Tree (BST)</h3><p>an inorder traversal of a binary search tree visits the keys in increasing order.<br>key(left descendant) &lt; key(node) &lt; key(right descendant)</p>
+<ul>
+<li>search<br>  Runs in O(h) time, where h is the height of the tree<br>  worst case is h=n   (like a list)<br>  best case is h=log2 n   (like a tree)</li>
+<li>insertion</li>
+<li>delete<ul>
+<li>w has one external child</li>
+<li>w has two internal children<br>  replace with the <strong>smallest key among the right</strong> subtree </li>
+</ul>
+</li>
+</ul>
+<h4 id="Improving-Balance-Trinode-Restructuring"><a href="#Improving-Balance-Trinode-Restructuring" class="headerlink" title="Improving Balance: Trinode Restructuring"></a>Improving Balance: Trinode Restructuring</h4><ul>
+<li>Single Rotations<br>O(1) time</li>
+<li>Double rotations<br>O(1) time</li>
+</ul>
+<h3 id="Rank-balanced-Trees"><a href="#Rank-balanced-Trees" class="headerlink" title="Rank-balanced Trees"></a>Rank-balanced Trees</h3><h4 id="AVL-Trees"><a href="#AVL-Trees" class="headerlink" title="AVL Trees"></a>AVL Trees</h4><p>The ranks of the two children of every internal node differ by at most 1.<br>The height of an AVL tree storing n keys is O(log n).</p>
+<ul>
+<li>Insertion<ul>
+<li>insert to have BST property, re-arrange to AVL</li>
+</ul>
+</li>
+<li>Removal<ul>
+<li>remove to have BST property, re-arrange to AVL</li>
+</ul>
+</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:right">Method</th>
+<th style="text-align:right">Time</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">space</td>
+<td style="text-align:right">O(n)</td>
+</tr>
+<tr>
+<td style="text-align:right">Height</td>
+<td style="text-align:right">O(log n)</td>
+</tr>
+<tr>
+<td style="text-align:right">Searching</td>
+<td style="text-align:right">O(log n)</td>
+</tr>
+<tr>
+<td style="text-align:right">Insertion</td>
+<td style="text-align:right">O(log n)</td>
+</tr>
+<tr>
+<td style="text-align:right">Removal</td>
+<td style="text-align:right">O(log n)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="Red-Black-Trees"><a href="#Red-Black-Trees" class="headerlink" title="Red-Black Trees"></a>Red-Black Trees</h4>
     </div>
 
     
@@ -303,6 +512,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Structures-I"><span class="nav-number">1.</span> <span class="nav-text">Data Structures I</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Array"><span class="nav-number">1.1.</span> <span class="nav-text">Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Array-based-Lists"><span class="nav-number">1.1.1.</span> <span class="nav-text">Array-based Lists</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linked-list"><span class="nav-number">1.2.</span> <span class="nav-text">Linked list</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Singly-Linked-List"><span class="nav-number">1.2.1.</span> <span class="nav-text">Singly Linked List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Doubly-Linked-Lists"><span class="nav-number">1.2.2.</span> <span class="nav-text">Doubly Linked Lists</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stack"><span class="nav-number">1.3.</span> <span class="nav-text">Stack</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Queue"><span class="nav-number">1.4.</span> <span class="nav-text">Queue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Priority-Queue-ADT"><span class="nav-number">1.4.1.</span> <span class="nav-text">Priority Queue ADT</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Selection-Sort"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">Selection-Sort</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Insertion-Sort"><span class="nav-number">1.4.1.2.</span> <span class="nav-text">Insertion-Sort</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Heap-min-heap"><span class="nav-number">1.5.</span> <span class="nav-text">Heap (min-heap)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Heap-Sort"><span class="nav-number">1.5.1.</span> <span class="nav-text">Heap-Sort</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trees"><span class="nav-number">1.6.</span> <span class="nav-text">Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Tree-Terminology"><span class="nav-number">1.6.1.</span> <span class="nav-text">Tree Terminology</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Traversing-trees"><span class="nav-number">1.6.2.</span> <span class="nav-text">Traversing trees</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Binary-Search-Tree-BST"><span class="nav-number">1.6.3.</span> <span class="nav-text">Binary Search Tree (BST)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Improving-Balance-Trinode-Restructuring"><span class="nav-number">1.6.3.1.</span> <span class="nav-text">Improving Balance: Trinode Restructuring</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rank-balanced-Trees"><span class="nav-number">1.6.4.</span> <span class="nav-text">Rank-balanced Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AVL-Trees"><span class="nav-number">1.6.4.1.</span> <span class="nav-text">AVL Trees</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Red-Black-Trees"><span class="nav-number">1.6.4.2.</span> <span class="nav-text">Red-Black Trees</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -443,6 +653,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

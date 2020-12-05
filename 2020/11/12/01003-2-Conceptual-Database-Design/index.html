@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="Conceptual Database DesignIntroductionConceptual Database Design: A technique for understanding and capturing business information requirements graphically. Entity Relationship ModelEntity and Relatio">
+<meta property="og:type" content="article">
 <meta property="og:title" content="01003-2:Conceptual Database Design">
 <meta property="og:url" content="http://example.com/2020/11/12/01003-2-Conceptual-Database-Design/index.html">
 <meta property="og:site_name" content="Dong">
+<meta property="og:description" content="Conceptual Database DesignIntroductionConceptual Database Design: A technique for understanding and capturing business information requirements graphically. Entity Relationship ModelEntity and Relatio">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-12T07:23:39.000Z">
-<meta property="article:modified_time" content="2020-11-13T06:28:25.549Z">
+<meta property="article:modified_time" content="2020-11-30T10:31:41.451Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="DBMS">
 <meta name="twitter:card" content="summary">
@@ -196,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-13 14:28:25" itemprop="dateModified" datetime="2020-11-13T14:28:25+08:00">2020-11-13</time>
+                <time title="Modified: 2020-11-30 18:31:41" itemprop="dateModified" datetime="2020-11-30T18:31:41+08:00">2020-11-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +228,58 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Conceptual-Database-Design"><a href="#Conceptual-Database-Design" class="headerlink" title="Conceptual Database Design"></a>Conceptual Database Design</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong>Conceptual Database Design</strong>: A technique for understanding and capturing business information requirements graphically.</p>
+<h2 id="Entity-Relationship-Model"><a href="#Entity-Relationship-Model" class="headerlink" title="Entity Relationship Model"></a>Entity Relationship Model</h2><h3 id="Entity-and-Relationship-types-attributes"><a href="#Entity-and-Relationship-types-attributes" class="headerlink" title="Entity and Relationship types, attributes"></a>Entity and Relationship types, attributes</h3><ul>
+<li>Entity: an individual object, e.g., a person, place, object, event, or concept about which you want to gather and store data.</li>
+<li>Entity Type (also: entity set): a collection of entities that share common properties or characteristics</li>
+<li>Attribute: describes one aspect of an entity set</li>
+<li>Domain: possible values of an attribute<ul>
+<li>simple/composite/single-valued/multi-valued</li>
+</ul>
+</li>
+<li>Key: <em>minimal set</em> of attributes that uniquely identifies an entity in the set (several such <strong>Candidate Keys</strong> possible)</li>
+<li>Entity Schema: entity set name, attributes (+domains), PK</li>
+<li>Relationship: relates two or more entities</li>
+<li>Relationship Type (Relationship Set): set of similar relationships</li>
+<li>Relationship-Attribute: Relationships can also have additional properties</li>
+<li>Relationship-Role: Each participating entity can be named with an explicit role</li>
+<li>Relationship Type Schema: Relationship name, Role names (optional), Relationship attributes (+domains)</li>
+</ul>
+<h3 id="Key-participation-and-cardinality-constraints"><a href="#Key-participation-and-cardinality-constraints" class="headerlink" title="Key, participation and cardinality constraints"></a>Key, participation and cardinality constraints</h3><p>The combination of the primary keys of the participating entity sets forms a <strong>super key</strong>  (superset of a key) of a relationship.</p>
+<h4 id="Key-Constraints"><a href="#Key-Constraints" class="headerlink" title="Key Constraints"></a>Key Constraints</h4><ul>
+<li>N:1 relationship: <em>at most one</em><br>  Representation: $\rightarrow $</li>
+<li>1:N (total participation): <em>at least one</em><br>  Representation: thick line</li>
+<li>1:1 relationship: <em>exactly one</em><br>  Representation: thick $\rightarrow $</li>
+<li>N:N relationship: line</li>
+</ul>
+<h4 id="Cardinality-Constraints"><a href="#Cardinality-Constraints" class="headerlink" title="Cardinality Constraints"></a>Cardinality Constraints</h4><p>how often an entity of set E participates in R at least (minimum cardinality) and at most (maximum cardinality). ‘*’ as max</p>
+<h3 id="Weak-entities-IsA-hierarchies-aggregation"><a href="#Weak-entities-IsA-hierarchies-aggregation" class="headerlink" title="Weak entities, IsA hierarchies, aggregation"></a>Weak entities, IsA hierarchies, aggregation</h3><h4 id="Weak-entity-type"><a href="#Weak-entity-type" class="headerlink" title="Weak entity type"></a>Weak entity type</h4><ul>
+<li>An entity type that does not have a self-contained primary key, must:<ul>
+<li>relate to the identifying owner entity set via a one-to-many identifying relationship type from the identifying owner entity set to the weak entity set</li>
+<li>have total participation in the identifying relationship type</li>
+</ul>
+</li>
+<li>The <strong>discriminator</strong> (or <em>partial key</em>) of a weak entity type is the set of attributes that<br>distinguishes among all the entities of a weak entity type related to the same owning entity.</li>
+<li>The primary key of a weak entity type =  the primary key of the strong entity type(s) on which the weak entity type is existence dependent, plus the weak entity type􏰲􏰹 discriminator.</li>
+</ul>
+<h4 id="Enhanced-E-R-Model"><a href="#Enhanced-E-R-Model" class="headerlink" title="Enhanced E-R Model"></a>Enhanced E-R Model</h4><p>E-R Model + SPECIALIZATION/ GENERALIZATION +ABSTRACTIONS 􏰼􏰷(aggregation􏰲)</p>
+<h4 id="Generalisation-Specialisation-Inheritance"><a href="#Generalisation-Specialisation-Inheritance" class="headerlink" title="Generalisation/ Specialisation/ Inheritance"></a>Generalisation/ Specialisation/ Inheritance</h4><ul>
+<li>Attribute inheritance 􏰵 a lower-level (subclass) entity type inherits all the attributes and<br>relationship participations of its supertype.</li>
+</ul>
+<h5 id="Constraints-on-IsA-Hierarchies"><a href="#Constraints-on-IsA-Hierarchies" class="headerlink" title="Constraints on IsA Hierarchies:"></a>Constraints on IsA Hierarchies:</h5><ul>
+<li>Overlap Constraints<ul>
+<li>Disjoint: an entity can belong to only one lower-level entity set</li>
+<li>Overlapping: an entity can belong to more than one lower-level entity set</li>
+</ul>
+</li>
+<li>Covering Constraints<ul>
+<li>Total: an entity must belong to one of the lower-level entity sets (thick line)</li>
+<li>Partial (the default): an entity need not belong to one of the lower-level entity sets</li>
+</ul>
+</li>
+</ul>
+<h4 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h4><p>We can convey relationships between an entity set and another relationship type via <strong>aggregation</strong></p>
+
     </div>
 
     
@@ -309,6 +362,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Conceptual-Database-Design"><span class="nav-number">1.</span> <span class="nav-text">Conceptual Database Design</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Entity-Relationship-Model"><span class="nav-number">1.2.</span> <span class="nav-text">Entity Relationship Model</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Entity-and-Relationship-types-attributes"><span class="nav-number">1.2.1.</span> <span class="nav-text">Entity and Relationship types, attributes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Key-participation-and-cardinality-constraints"><span class="nav-number">1.2.2.</span> <span class="nav-text">Key, participation and cardinality constraints</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Key-Constraints"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">Key Constraints</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cardinality-Constraints"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">Cardinality Constraints</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Weak-entities-IsA-hierarchies-aggregation"><span class="nav-number">1.2.3.</span> <span class="nav-text">Weak entities, IsA hierarchies, aggregation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Weak-entity-type"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">Weak entity type</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Enhanced-E-R-Model"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">Enhanced E-R Model</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Generalisation-Specialisation-Inheritance"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">Generalisation&#x2F; Specialisation&#x2F; Inheritance</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Constraints-on-IsA-Hierarchies"><span class="nav-number">1.2.3.3.1.</span> <span class="nav-text">Constraints on IsA Hierarchies:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Aggregation"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">Aggregation</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -449,6 +503,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

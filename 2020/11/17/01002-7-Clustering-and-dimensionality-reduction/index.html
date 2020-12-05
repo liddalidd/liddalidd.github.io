@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="Clustering and dimensionality reduction Clustering algorithms Choosing k Evaluating clustering Principal Component Analysis Eigenvalues and Eigenvectors  ClusteringSimilarity and Dissimilarity Between">
+<meta property="og:type" content="article">
 <meta property="og:title" content="01002-7:Clustering and dimensionality reduction">
 <meta property="og:url" content="http://example.com/2020/11/17/01002-7-Clustering-and-dimensionality-reduction/index.html">
 <meta property="og:site_name" content="Dong">
+<meta property="og:description" content="Clustering and dimensionality reduction Clustering algorithms Choosing k Evaluating clustering Principal Component Analysis Eigenvalues and Eigenvectors  ClusteringSimilarity and Dissimilarity Between">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-17T03:26:18.000Z">
-<meta property="article:modified_time" content="2020-11-21T07:40:24.708Z">
+<meta property="article:modified_time" content="2020-12-03T10:11:05.834Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="DS">
 <meta name="twitter:card" content="summary">
@@ -196,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-21 15:40:24" itemprop="dateModified" datetime="2020-11-21T15:40:24+08:00">2020-11-21</time>
+                <time title="Modified: 2020-12-03 18:11:05" itemprop="dateModified" datetime="2020-12-03T18:11:05+08:00">2020-12-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +228,66 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Clustering-and-dimensionality-reduction"><a href="#Clustering-and-dimensionality-reduction" class="headerlink" title="Clustering and dimensionality reduction"></a>Clustering and dimensionality reduction</h1><ul>
+<li>Clustering algorithms</li>
+<li>Choosing k</li>
+<li>Evaluating clustering</li>
+<li>Principal Component Analysis</li>
+<li>Eigenvalues and Eigenvectors</li>
+</ul>
+<h2 id="Clustering"><a href="#Clustering" class="headerlink" title="Clustering"></a>Clustering</h2><h3 id="Similarity-and-Dissimilarity-Between-Objects"><a href="#Similarity-and-Dissimilarity-Between-Objects" class="headerlink" title="Similarity and Dissimilarity Between Objects"></a>Similarity and Dissimilarity Between Objects</h3><p>Minkowski distance:<br>$d(i,j)=\sqrt[q]{ |x_{i_1}-|x_{j_1}|^q + |x_{i_2}-|x_{j_2}|^q + \cdot \cdot \cdot + |x_{i_p}-|x_{j_p}|^q}$</p>
+<p>q = 1, d is Manhattan distance<br>q = 2, d is Euclidean distance </p>
+<h3 id="Types-of-Clusterings"><a href="#Types-of-Clusterings" class="headerlink" title="Types of Clusterings"></a>Types of Clusterings</h3><h4 id="Hierarchical-clustering"><a href="#Hierarchical-clustering" class="headerlink" title="Hierarchical clustering"></a>Hierarchical clustering</h4><ul>
+<li><p>Agglomerative:(“bottom up” approach)</p>
+<ul>
+<li>Initial<ul>
+<li>Each point in its own cluster</li>
+</ul>
+</li>
+<li>Repeat<ul>
+<li>Find closest pair of clusters</li>
+<li>Merge them into one cluster</li>
+<li>Recompute distances between new cluster and others<ul>
+<li>single linkage (minimum)</li>
+<li>complete linkage (maximum)</li>
+<li>average linkage</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Until<ul>
+<li>Desired number of clusters remaining e.g. single cluster</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Divisive:(“top down” approach)</p>
+</li>
+</ul>
+<h4 id="Partitional-clustering"><a href="#Partitional-clustering" class="headerlink" title="Partitional clustering"></a>Partitional clustering</h4><p>K-Means Clustering</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Select K points as the initial centroids</span><br><span class="line">repeat</span><br><span class="line">    Form K clusters by assigning all points to the closest centroid</span><br><span class="line">    Recompute the centroid of each cluster</span><br><span class="line">until The centoids don&#96;t change</span><br></pre></td></tr></table></figure>
+<p>Complexity is O( n <em> k </em> i * d )</p>
+<h2 id="Evaluating-Clustering"><a href="#Evaluating-Clustering" class="headerlink" title="Evaluating Clustering"></a>Evaluating Clustering</h2><h3 id="Cluster-Validity"><a href="#Cluster-Validity" class="headerlink" title="Cluster Validity"></a>Cluster Validity</h3><h4 id="Measures-of-Cluster-Validity"><a href="#Measures-of-Cluster-Validity" class="headerlink" title="Measures of Cluster Validity"></a>Measures of Cluster Validity</h4><ul>
+<li><p>External Index: Measure the extent to which cluster labels match externally supplied class labels (e.g., accuracy, precision, recall, F1-score)</p>
+<ul>
+<li>Homogeneity: precision P = TP / (TP+FP)</li>
+<li>Completeness: recall R = TP / (TP+FN)</li>
+<li>V-measure: F1 score = 2PR / (P+R)</li>
+</ul>
+</li>
+<li><p>Internal Index: Measure the goodness of a clustering structure without respect to external information (e.g., Sum of Squared Error)</p>
+<ul>
+<li><p>$SSE=\sum_{i=1}^K\sum_{x\in C_i}dist^2(m_i,x)$</p>
+</li>
+<li><p>Silhouette Coefficient:<br>$s=1-a/b if a&lt;b else s=b/a-1$</p>
+</li>
+</ul>
+</li>
+<li><p>Relative Index: Compare two different clusterings or clusters (often an external or internal index is used)</p>
+</li>
+</ul>
+<h2 id="Choosing-k"><a href="#Choosing-k" class="headerlink" title="Choosing k"></a>Choosing k</h2><h3 id="Using-Silhouettes-to-choose-k"><a href="#Using-Silhouettes-to-choose-k" class="headerlink" title="Using Silhouettes to choose k"></a>Using Silhouettes to choose k</h3><h2 id="Principal-Components-Analysis"><a href="#Principal-Components-Analysis" class="headerlink" title="Principal Components Analysis"></a>Principal Components Analysis</h2><p>PCA method is particularly useful when the variables within the data set are highly correlated.</p>
+
     </div>
 
     
@@ -309,6 +370,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Clustering-and-dimensionality-reduction"><span class="nav-number">1.</span> <span class="nav-text">Clustering and dimensionality reduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Clustering"><span class="nav-number">1.1.</span> <span class="nav-text">Clustering</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Similarity-and-Dissimilarity-Between-Objects"><span class="nav-number">1.1.1.</span> <span class="nav-text">Similarity and Dissimilarity Between Objects</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Types-of-Clusterings"><span class="nav-number">1.1.2.</span> <span class="nav-text">Types of Clusterings</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hierarchical-clustering"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">Hierarchical clustering</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Partitional-clustering"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">Partitional clustering</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluating-Clustering"><span class="nav-number">1.2.</span> <span class="nav-text">Evaluating Clustering</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cluster-Validity"><span class="nav-number">1.2.1.</span> <span class="nav-text">Cluster Validity</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Measures-of-Cluster-Validity"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Measures of Cluster Validity</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Choosing-k"><span class="nav-number">1.3.</span> <span class="nav-text">Choosing k</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-Silhouettes-to-choose-k"><span class="nav-number">1.3.1.</span> <span class="nav-text">Using Silhouettes to choose k</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Principal-Components-Analysis"><span class="nav-number">1.4.</span> <span class="nav-text">Principal Components Analysis</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -449,6 +511,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

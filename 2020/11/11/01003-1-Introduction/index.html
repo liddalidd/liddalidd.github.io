@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="Dong">
 <meta property="og:description" content="Course summary for Database Management Systems Outline Introduction Conceptual Database Design Relational Data Model &#x2F; Logical Database Design Relational Algebra and SQL Complex SQL Database Integrity">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2020/11/11/01003-1-Introduction/01003-1.1.png">
 <meta property="article:published_time" content="2020-11-11T08:48:06.000Z">
-<meta property="article:modified_time" content="2020-11-11T09:09:45.409Z">
+<meta property="article:modified_time" content="2020-11-30T09:05:22.104Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="DBMS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2020/11/11/01003-1-Introduction/01003-1.1.png">
 
 <link rel="canonical" href="http://example.com/2020/11/11/01003-1-Introduction/">
 
@@ -190,10 +192,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-11-11 16:48:06 / Modified: 17:09:45" itemprop="dateCreated datePublished" datetime="2020-11-11T16:48:06+08:00">2020-11-11</time>
+              <time title="Created: 2020-11-11 16:48:06" itemprop="dateCreated datePublished" datetime="2020-11-11T16:48:06+08:00">2020-11-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-30 17:05:22" itemprop="dateModified" datetime="2020-11-30T17:05:22+08:00">2020-11-30</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -237,6 +245,67 @@
 <li>Query Evaluation and Optimisation</li>
 <li>Revision</li>
 </ol>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h2 id="Advantage-of-DBMS"><a href="#Advantage-of-DBMS" class="headerlink" title="Advantage of DBMS"></a>Advantage of DBMS</h2><ul>
+<li>Application-Data Independence</li>
+<li>Minimal Data Redundancy</li>
+<li>Improved Data Sharing &amp; Security</li>
+<li>Enforcement of Standards</li>
+<li>Improved Data Quality</li>
+<li>Better Data Accessibility/ Responsiveness </li>
+<li>Backup/Recovery,Concurrency</li>
+</ul>
+<h2 id="Structure-of-a-DBMS"><a href="#Structure-of-a-DBMS" class="headerlink" title="Structure of a DBMS"></a>Structure of a DBMS</h2><p><img src="01003-1.1.png" alt="Structure"></p>
+<h2 id="Relational-Data-Model"><a href="#Relational-Data-Model" class="headerlink" title="Relational Data Model"></a>Relational Data Model</h2><p>A <strong>data model</strong> is a collection of concepts for describing data</p>
+<ul>
+<li>Main Concept: the relation (essentially, a table) and schema</li>
+</ul>
+<h2 id="Central-DBMS-Services"><a href="#Central-DBMS-Services" class="headerlink" title="Central DBMS Services"></a>Central DBMS Services</h2><h3 id="Data-Independence"><a href="#Data-Independence" class="headerlink" title="Data Independence"></a>Data Independence</h3><ul>
+<li>Logical data independence:</li>
+<li>Physical data independence:</li>
+</ul>
+<h3 id="Declarative-Querying"><a href="#Declarative-Querying" class="headerlink" title="Declarative Querying"></a>Declarative Querying</h3><ul>
+<li>DML:  Data Manipulation Language   - Select, insert, update</li>
+<li>DDL:  Data Definition Language         - Create, Alter, Drop</li>
+<li>DCL:  Data Control Language            - Grant, Revoke</li>
+</ul>
+<h3 id="Transaction-Management-amp-Concurrency-Control"><a href="#Transaction-Management-amp-Concurrency-Control" class="headerlink" title="Transaction Management &amp; Concurrency Control"></a>Transaction Management &amp; Concurrency Control</h3><h2 id="DB-System-Requirements"><a href="#DB-System-Requirements" class="headerlink" title="DB System Requirements"></a>DB System Requirements</h2><ul>
+<li>High Availability: on-line =&gt; must be operational while enterprise is functioning</li>
+<li>High Reliability: correctly tracks state, does not loose data, controlled concurrency</li>
+<li>High Throughput: many users =&gt; many transactions/sec</li>
+<li>Low Response Time: on-line =&gt; users are waiting</li>
+<li>􏰱 Long Lifetime: complex systems are not easily replaced<ul>
+<li>Must be designed so they can be easily extended as the needs of the enterprise change</li>
+</ul>
+</li>
+<li>Security:<ul>
+<li>sensitive information must be carefully protected since system is accessible to many users</li>
+<li>Authentication, authorization, encryption</li>
+</ul>
+</li>
+</ul>
+<h2 id="Roles-in-DBMS"><a href="#Roles-in-DBMS" class="headerlink" title="Roles in DBMS"></a>Roles in DBMS</h2><ul>
+<li>System Analysts<ul>
+<li>specifies system using input from customer; provides complete description of functionality from customer􏰲s and user􏰲s point of view</li>
+</ul>
+</li>
+<li>Conceptual database design</li>
+<li>Database Designer<ul>
+<li>specifies structure of data that will be stored in database ( logical &amp; physical database schemas)</li>
+</ul>
+</li>
+<li>DB Application Programmer<ul>
+<li>implements application programs (transactions) that access data and support enterprise rules</li>
+</ul>
+</li>
+<li>Database Administrator (DBA)<ul>
+<li>maintains database once system is operational: space allocation, performance optimization, database security, deals with failures and congestion</li>
+</ul>
+</li>
+<li>􏰱End-Users<ul>
+<li>often unaware that they are dealing with data in a DBMS</li>
+</ul>
+</li>
+</ul>
 
     </div>
 
@@ -320,7 +389,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Outline"><span class="nav-number">1.</span> <span class="nav-text">Outline</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Outline"><span class="nav-number">1.</span> <span class="nav-text">Outline</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number"></span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Advantage-of-DBMS"><span class="nav-number">1.</span> <span class="nav-text">Advantage of DBMS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Structure-of-a-DBMS"><span class="nav-number">2.</span> <span class="nav-text">Structure of a DBMS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Relational-Data-Model"><span class="nav-number">3.</span> <span class="nav-text">Relational Data Model</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Central-DBMS-Services"><span class="nav-number">4.</span> <span class="nav-text">Central DBMS Services</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Independence"><span class="nav-number">4.1.</span> <span class="nav-text">Data Independence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Declarative-Querying"><span class="nav-number">4.2.</span> <span class="nav-text">Declarative Querying</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transaction-Management-amp-Concurrency-Control"><span class="nav-number">4.3.</span> <span class="nav-text">Transaction Management &amp; Concurrency Control</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DB-System-Requirements"><span class="nav-number">5.</span> <span class="nav-text">DB System Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Roles-in-DBMS"><span class="nav-number">6.</span> <span class="nav-text">Roles in DBMS</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -461,6 +530,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

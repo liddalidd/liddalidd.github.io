@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="Random variavblesDiscrete Random Variablescumulative distribution function (CDF):$F(x)&#x3D;P(X ≤ x)$  mean$\mu &#x3D;E(X)&#x3D;\sum_{all x}^{}xP(X&#x3D;x)$   NOTE: 4 main statistical usages of the word ‘mean’:  The mean">
+<meta property="og:type" content="article">
 <meta property="og:title" content="01001-3:Random variavbles">
 <meta property="og:url" content="http://example.com/2020/11/16/01001-3-Random-variavbles/index.html">
 <meta property="og:site_name" content="Dong">
+<meta property="og:description" content="Random variavblesDiscrete Random Variablescumulative distribution function (CDF):$F(x)&#x3D;P(X ≤ x)$  mean$\mu &#x3D;E(X)&#x3D;\sum_{all x}^{}xP(X&#x3D;x)$   NOTE: 4 main statistical usages of the word ‘mean’:  The mean">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-16T04:36:33.000Z">
-<meta property="article:modified_time" content="2020-11-16T04:42:16.933Z">
+<meta property="article:modified_time" content="2020-11-24T03:30:02.482Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="Statistics">
 <meta name="twitter:card" content="summary">
@@ -188,10 +190,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-11-16 12:36:33 / Modified: 12:42:16" itemprop="dateCreated datePublished" datetime="2020-11-16T12:36:33+08:00">2020-11-16</time>
+              <time title="Created: 2020-11-16 12:36:33" itemprop="dateCreated datePublished" datetime="2020-11-16T12:36:33+08:00">2020-11-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-24 11:30:02" itemprop="dateModified" datetime="2020-11-24T11:30:02+08:00">2020-11-24</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -220,7 +228,60 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Random-variavbles"><a href="#Random-variavbles" class="headerlink" title="Random variavbles"></a>Random variavbles</h1><h2 id="Discrete-Random-Variables"><a href="#Discrete-Random-Variables" class="headerlink" title="Discrete Random Variables"></a>Discrete Random Variables</h2><p>cumulative distribution function (CDF):<br>$F(x)=P(X ≤ x)$</p>
+<ul>
+<li><p>mean<br>$\mu =E(X)=\sum_{all x}^{}xP(X=x)$</p>
+<p>  NOTE: 4 main statistical usages of the word ‘mean’:</p>
+<ul>
+<li>The mean of a sample: $\overline x$</li>
+<li>The mean of a population: $\mu$</li>
+<li>The mean of a random variable :X</li>
+<li>The distribution of the sampling mean: $\overline X$</li>
+</ul>
+</li>
+<li>expectation<br>$E(g(x))=\sum_{all x}^{}g(x)P(X=x)$ </li>
+<li>variance<br>$\sigma^2 =Var(x)=E(X-\mu)^2=E(X^2)-E(X)^2$</li>
+</ul>
+<h3 id="Binomial-Distribution"><a href="#Binomial-Distribution" class="headerlink" title="Binomial Distribution"></a>Binomial Distribution</h3><p>$X~Bin(n,p)$<br>$P(X=x)=(_x^n)p^x(1-p^{n-x}$</p>
+<ul>
+<li>mean: E(X)=np</li>
+<li>variance: Var(x)=np(1-p)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># dbinom(x,n,p) P(X&#x3D;x)</span><br><span class="line">dbinom(0,10,0.2)</span><br><span class="line"># pbinom(x,n,p) P(X&lt;&#x3D;x)</span><br><span class="line">pbinom(1,10,0.2)</span><br></pre></td></tr></table></figure>
+<h3 id="Hypergeometric-distribution"><a href="#Hypergeometric-distribution" class="headerlink" title="Hypergeometric distribution"></a>Hypergeometric distribution</h3><em>without replacement</em><br>$P(X=x)=\frac{ (_x^{N_1})(_{n-x}^{N_2}) }{(_n^N)}$<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#dhyper(x,N1,N2,n)</span><br><span class="line">dhyper(2,10,6,3)</span><br><span class="line">choose(10,2)*choose(6,1)&#x2F;choose(6,3)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Continuous-Random-Variables"><a href="#Continuous-Random-Variables" class="headerlink" title="Continuous Random Variables"></a>Continuous Random Variables</h2><h3 id="Normal-distribution"><a href="#Normal-distribution" class="headerlink" title="Normal distribution"></a>Normal distribution</h3><p>$X~N(mean,sd^2)$<br>$f(x)=\frac{1}{ \sqrt{(2\pi \sigma ^2) }}e^{-\frac{(x-\mu)^2}{2\sigma ^2}}$</p>
+<p>$F(x)=P(X\leq x)=\int_{-\infty}^{x}f(y)dy$</p>
+<h4 id="Standard-Normal"><a href="#Standard-Normal" class="headerlink" title="Standard Normal"></a>Standard Normal</h4><p>$Z~N(0,1)$</p>
+<p>$P(X\leq x)=P(Z\leq \frac{x-\mu}{\sigma}) $</p>
+<h3 id="Student’s-t-distribution"><a href="#Student’s-t-distribution" class="headerlink" title="Student’s t-distribution"></a>Student’s t-distribution</h3><p>X ~ $t_n$, with n degrees of freedom</p>
+<p>mean: 0<br>variance: $\frac{n}{n-2}$ for n&gt;2</p>
+<h3 id="Chi-Squared-distribution"><a href="#Chi-Squared-distribution" class="headerlink" title="Chi-Squared distribution"></a>Chi-Squared distribution</h3><p>X ∼ $x_n^2$ where n is the degrees of freedom</p>
+<p>mean:n<br>variance: 2n</p>
+<h3 id="F-Distribution"><a href="#F-Distribution" class="headerlink" title="F-Distribution"></a>F-Distribution</h3><p>X ∼ $F_{m,n}$ scaled ratio of two independent χ2 random variables, with m and n degrees of freedom.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># pnorm(x,mean,sd)</span><br><span class="line">pnorm(189,161,8.6)</span><br><span class="line">pnorm(0.8,0,1)&#x3D;pnorm(0.8)</span><br><span class="line"></span><br><span class="line"># qnorm (%,mean,sd) ----find x that P(X&lt;&#x3D;x)&#x3D;0.9</span><br><span class="line">qnorm(0.9,161.8,6)</span><br><span class="line"></span><br><span class="line"># t-dis</span><br><span class="line">pt(2,4) &#x2F;&#x2F;P(X&lt;&#x3D;2), X~t4</span><br><span class="line"># Chi-squared dis</span><br><span class="line">1-pchisq(3,4) &#x2F;&#x2F;P(X&gt;&#x3D;3), X~X_4^2</span><br><span class="line"># F-dis</span><br><span class="line">pf(3,2,4)-pf(1,2,4) X~F(2,4)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="Combinations-of-Random-Variables"><a href="#Combinations-of-Random-Variables" class="headerlink" title="Combinations of Random Variables"></a>Combinations of Random Variables</h2><h3 id="Linear-Function-of-a-Random-Variable"><a href="#Linear-Function-of-a-Random-Variable" class="headerlink" title="Linear Function of a Random Variable"></a>Linear Function of a Random Variable</h3><p>$ Y = a + bX$</p>
+<p>$ E(Y ) = a + bE(X)$</p>
+<p>$Var(Y ) = b^2Var(X)$</p>
+<p>$X∼N(\mu,\sigma^2) —&gt; Y~N(a+b\mu,b^2\sigma^2)$</p>
+<h3 id="Independence-for-Random-Variables"><a href="#Independence-for-Random-Variables" class="headerlink" title="Independence for Random Variables)"></a>Independence for Random Variables)</h3><p>$P(X\leq x,Y \leq y)=P(X \leq x)P(Y \leq y)$</p>
+<ul>
+<li>correlation<br>$Cov(X,Y)=E(XY)-E(X)E(Y)$</li>
+</ul>
+<h3 id="sample-Mean-of-Random-Variables"><a href="#sample-Mean-of-Random-Variables" class="headerlink" title="sample Mean of Random Variables"></a>sample Mean of Random Variables</h3><p>// TODO:</p>
+<h3 id="Total-and-Sample-Mean-of-Normal-RVs"><a href="#Total-and-Sample-Mean-of-Normal-RVs" class="headerlink" title="Total and Sample Mean of Normal RVs"></a>Total and Sample Mean of Normal RVs</h3><p>// TODO:</p>
+<h3 id="Total-and-Sample-Mean-of-iid-Normal-RVs"><a href="#Total-and-Sample-Mean-of-iid-Normal-RVs" class="headerlink" title="Total and Sample Mean of iid Normal RVs"></a>Total and Sample Mean of iid Normal RVs</h3><p>// TODO:</p>
+<h3 id="Central-Limit-Theorem-CLT"><a href="#Central-Limit-Theorem-CLT" class="headerlink" title="Central Limit Theorem (CLT)"></a>Central Limit Theorem (CLT)</h3><p>If $X_i$ ∼ $(μ,σ^2)$ for i = 1,2,…,n then</p>
+<p>$\overline X \approx N(\mu,\frac{\sigma^2}{n})$</p>
+<ul>
+<li><p>normal dis (N&gt;=30)<br>$\overline X ~ N(\mu,\frac{\sigma}{\sqrt{n}})$</p>
+</li>
+<li><p>binomial dis (n&gt;25,np&gt;5,nq&gt;5)<br>approximate: $\overline p \approx N(p, \sqrt{ \frac{pq}{n} })$</p>
+<ul>
+<li>bin -&gt; normal<br>if X~Bin(n,p) when n is large (n&gt;25,np&gt;5,nq&gt;5)<br>-&gt; $Y~N(\mu=np,\sigma=\sqrt{npq})$</li>
+</ul>
+</li>
+</ul>
+
     </div>
 
     
@@ -303,6 +364,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Random-variavbles"><span class="nav-number">1.</span> <span class="nav-text">Random variavbles</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Discrete-Random-Variables"><span class="nav-number">1.1.</span> <span class="nav-text">Discrete Random Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Binomial-Distribution"><span class="nav-number">1.1.1.</span> <span class="nav-text">Binomial Distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hypergeometric-distribution"><span class="nav-number">1.1.2.</span> <span class="nav-text">Hypergeometric distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Continuous-Random-Variables"><span class="nav-number">1.2.</span> <span class="nav-text">Continuous Random Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-distribution"><span class="nav-number">1.2.1.</span> <span class="nav-text">Normal distribution</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Standard-Normal"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">Standard Normal</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Student%E2%80%99s-t-distribution"><span class="nav-number">1.2.2.</span> <span class="nav-text">Student’s t-distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chi-Squared-distribution"><span class="nav-number">1.2.3.</span> <span class="nav-text">Chi-Squared distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-Distribution"><span class="nav-number">1.2.4.</span> <span class="nav-text">F-Distribution</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Combinations-of-Random-Variables"><span class="nav-number">1.3.</span> <span class="nav-text">Combinations of Random Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Function-of-a-Random-Variable"><span class="nav-number">1.3.1.</span> <span class="nav-text">Linear Function of a Random Variable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Independence-for-Random-Variables"><span class="nav-number">1.3.2.</span> <span class="nav-text">Independence for Random Variables)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-Mean-of-Random-Variables"><span class="nav-number">1.3.3.</span> <span class="nav-text">sample Mean of Random Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Total-and-Sample-Mean-of-Normal-RVs"><span class="nav-number">1.3.4.</span> <span class="nav-text">Total and Sample Mean of Normal RVs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Total-and-Sample-Mean-of-iid-Normal-RVs"><span class="nav-number">1.3.5.</span> <span class="nav-text">Total and Sample Mean of iid Normal RVs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Central-Limit-Theorem-CLT"><span class="nav-number">1.3.6.</span> <span class="nav-text">Central Limit Theorem (CLT)</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -443,6 +505,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

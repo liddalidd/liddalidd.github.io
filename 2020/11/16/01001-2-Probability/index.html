@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="ProbabilityTypes: data-based probability  12# toss simulationtable(sample(c(&quot;H&quot;,&quot;T&quot;),4040,replace&#x3D;T))&#x2F;4040  model-based probability12345# toss simulationset.seed(1)CoinTo">
+  <meta name="description" content="ProbabilityTypes: data-based probability12# toss simulationtable(sample(c(&quot;H&quot;,&quot;T&quot;),4040,replace&#x3D;T))&#x2F;4040 model-based probability12345# toss simulationset.seed(1)CoinTosse">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01001-2:Probability">
 <meta property="og:url" content="http://example.com/2020/11/16/01001-2-Probability/index.html">
 <meta property="og:site_name" content="Dong">
-<meta property="og:description" content="ProbabilityTypes: data-based probability  12# toss simulationtable(sample(c(&quot;H&quot;,&quot;T&quot;),4040,replace&#x3D;T))&#x2F;4040  model-based probability12345# toss simulationset.seed(1)CoinTo">
+<meta property="og:description" content="ProbabilityTypes: data-based probability12# toss simulationtable(sample(c(&quot;H&quot;,&quot;T&quot;),4040,replace&#x3D;T))&#x2F;4040 model-based probability12345# toss simulationset.seed(1)CoinTosse">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-16T04:36:15.000Z">
-<meta property="article:modified_time" content="2020-11-23T13:54:19.984Z">
+<meta property="article:modified_time" content="2020-11-23T14:25:38.383Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="Statistics">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-23 21:54:19" itemprop="dateModified" datetime="2020-11-23T21:54:19+08:00">2020-11-23</time>
+                <time title="Modified: 2020-11-23 22:25:38" itemprop="dateModified" datetime="2020-11-23T22:25:38+08:00">2020-11-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,22 +229,37 @@
 
       
         <h1 id="Probability"><a href="#Probability" class="headerlink" title="Probability"></a>Probability</h1><h2 id="Types"><a href="#Types" class="headerlink" title="Types:"></a>Types:</h2><ul>
-<li>data-based probability</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># toss simulation</span><br><span class="line">table(sample(c(&quot;H&quot;,&quot;T&quot;),4040,replace&#x3D;T))&#x2F;4040</span><br></pre></td></tr></table></figure>
-<ul>
+<li>data-based probability<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># toss simulation</span><br><span class="line">table(sample(c(&quot;H&quot;,&quot;T&quot;),4040,replace&#x3D;T))&#x2F;4040</span><br></pre></td></tr></table></figure></li>
 <li>model-based probability<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># toss simulation</span><br><span class="line">set.seed(1)</span><br><span class="line">CoinTosses&#x3D;sample(c(-1,1), 1000, replace &#x3D; TRUE) </span><br><span class="line">plot(cumsum(CoinTosses),xlab&#x3D;&quot;Tosses&quot;,</span><br><span class="line">     ylab&#x3D;&quot;P&#x2F;L&quot;, type&#x3D;&quot;l&quot;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="Probability-results"><a href="#Probability-results" class="headerlink" title="Probability results"></a>Probability results</h2><h3 id="Classical-probablity"><a href="#Classical-probablity" class="headerlink" title="Classical probablity"></a>Classical probablity</h3><p>with sample space \omega, event A<br>P(\omega)=1</p>
+<h2 id="Probability-results"><a href="#Probability-results" class="headerlink" title="Probability results"></a>Probability results</h2><h3 id="Classical-probablity"><a href="#Classical-probablity" class="headerlink" title="Classical probablity"></a>Classical probablity</h3><p>with sample space $\Omega$ event A,</p>
+<p>$P(\Omega)=1$</p>
 <ul>
-<li>complement<br>P(A`)=1-P(A)</li>
-<li>mutually exclusive<br>P(A\capB)=0</li>
-<li>independence<br>P(A\capB)=P(A)P(B)<br>P(A|B)=P(A)</li>
-<li>union rule<br>P(A\cupB)=P(A)+P(B)-P(A\capB)</li>
-<li>conditional probility<br>P(A|B)=\frac{P(A\capB)}{P(B)}</li>
-<li>Bayes theoren<br>P(A|B)=\frac{P(B|A)P(A)}{P(B)}</li>
-<li>the law of total probabilitiy<br>P(A)=\sum_iP(A|B_i)(B_i)</li>
+<li><p>complement<br>$P(A`)=1-P(A)$</p>
+</li>
+<li><p>mutually exclusive<br>$P(A\cap B)=0$<br>$P(A\cup B)=P(A)+P(B)$</p>
+</li>
+<li><p>independence<br>$P(A\cap B)=P(A)P(B)$<br>$P(A|B)=P(A)$</p>
+</li>
+<li><p>union rule<br>$P(A\cup B)=P(A)+P(B)-P(A\cap B)$</p>
+</li>
+<li><p>conditional probility<br>$P(A|B)=\frac{P(A\cap B)}{P(B)}$</p>
+</li>
+<li><p>Multiplication rule<br>$P(A\cap B) = P(A|B)<em>P(B)$<br>Joint probability = conditional probability </em> P(condition)</p>
+</li>
+<li><p>Bayes theoren<br>$P(A|B)=\frac{P(B|A)P(A)}{P(B)}$</p>
+</li>
+<li><p>the law of total probabilitiy<br>$P(A)=\sum_iP(A|B_i)(B_i)$</p>
+</li>
+</ul>
+<h3 id="Random-variable"><a href="#Random-variable" class="headerlink" title="Random variable"></a>Random variable</h3><h3 id="Distribution"><a href="#Distribution" class="headerlink" title="Distribution"></a>Distribution</h3><p>-permutation<br>$nPr=\frac{n!}{(n-r)!}$</p>
+<ul>
+<li>combination<br>$(_{x}^{n})=\frac{n!}{x!(n-x)!}$<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">factorial(10)&#x2F;(factorial(8)*factorial(2))</span><br><span class="line">choose(10,2)</span><br></pre></td></tr></table></figure>
+<h3 id="Probability-functions"><a href="#Probability-functions" class="headerlink" title="Probability functions"></a>Probability functions</h3></li>
+<li>for discrete variables:<br>probability distribution function: $P (X = x)$</li>
+<li>for continuous variables:<br>probability density function (pdf) : $f(x)$</li>
+<li>for both discrete and continuous variables:<br>cumulative distribution function (CDF): $F(x)=P(X ≤ x)$</li>
 </ul>
 
     </div>
@@ -329,7 +344,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Probability"><span class="nav-number">1.</span> <span class="nav-text">Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Types"><span class="nav-number">1.1.</span> <span class="nav-text">Types:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Probability-results"><span class="nav-number">1.2.</span> <span class="nav-text">Probability results</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Classical-probablity"><span class="nav-number">1.2.1.</span> <span class="nav-text">Classical probablity</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Probability"><span class="nav-number">1.</span> <span class="nav-text">Probability</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Types"><span class="nav-number">1.1.</span> <span class="nav-text">Types:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Probability-results"><span class="nav-number">1.2.</span> <span class="nav-text">Probability results</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Classical-probablity"><span class="nav-number">1.2.1.</span> <span class="nav-text">Classical probablity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-variable"><span class="nav-number">1.2.2.</span> <span class="nav-text">Random variable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Distribution"><span class="nav-number">1.2.3.</span> <span class="nav-text">Distribution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Probability-functions"><span class="nav-number">1.2.4.</span> <span class="nav-text">Probability functions</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="Data Exploration with Python– Data types, cleaning, preprocessing– Descriptive statistics, e.g., median, quartiles, IQR, outliers– Descriptive visualisation, e.g., boxplots, confidence intervals Pytho">
+<meta property="og:type" content="article">
 <meta property="og:title" content="01002-3:Cleaning and storing data">
 <meta property="og:url" content="http://example.com/2020/11/17/01002-3-Cleaning-and-storing-data/index.html">
 <meta property="og:site_name" content="Dong">
+<meta property="og:description" content="Data Exploration with Python– Data types, cleaning, preprocessing– Descriptive statistics, e.g., median, quartiles, IQR, outliers– Descriptive visualisation, e.g., boxplots, confidence intervals Pytho">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-17T03:24:14.000Z">
-<meta property="article:modified_time" content="2020-11-21T07:40:24.715Z">
+<meta property="article:modified_time" content="2020-12-03T04:34:18.900Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="DS">
 <meta name="twitter:card" content="summary">
@@ -196,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-21 15:40:24" itemprop="dateModified" datetime="2020-11-21T15:40:24+08:00">2020-11-21</time>
+                <time title="Modified: 2020-12-03 12:34:18" itemprop="dateModified" datetime="2020-12-03T12:34:18+08:00">2020-12-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +228,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Data-Exploration-with-Python"><a href="#Data-Exploration-with-Python" class="headerlink" title="Data Exploration with Python"></a>Data Exploration with Python</h1><p>– Data types, cleaning, preprocessing<br>– Descriptive statistics, e.g., median, quartiles, IQR, outliers<br>– Descriptive visualisation, e.g., boxplots, confidence intervals</p>
+<h2 id="Python-and-Jupyter-Notebooks"><a href="#Python-and-Jupyter-Notebooks" class="headerlink" title="Python and Jupyter Notebooks"></a>Python and Jupyter Notebooks</h2><h2 id="Descriptive-Statistics"><a href="#Descriptive-Statistics" class="headerlink" title="Descriptive Statistics"></a>Descriptive Statistics</h2><h2 id="Visualisation"><a href="#Visualisation" class="headerlink" title="Visualisation"></a>Visualisation</h2><h2 id="Box-plots-and-correlation"><a href="#Box-plots-and-correlation" class="headerlink" title="Box plots and correlation"></a>Box plots and correlation</h2><h2 id="Text-Data"><a href="#Text-Data" class="headerlink" title="Text Data"></a>Text Data</h2><h1 id="Data-Extract-Data-Transformation-and-Storage"><a href="#Data-Extract-Data-Transformation-and-Storage" class="headerlink" title="Data Extract, Data Transformation and Storage"></a>Data Extract, Data Transformation and Storage</h1><ul>
+<li>DB Access from Python</li>
+<li>Data cleaning and preprocessing</li>
+<li>Data Modeling and DB Creation</li>
+<li>Data Loading/Storage</li>
+</ul>
+<h2 id="New-Scenario"><a href="#New-Scenario" class="headerlink" title="New Scenario"></a>New Scenario</h2><h2 id="Database-Loading-with-Python"><a href="#Database-Loading-with-Python" class="headerlink" title="Database Loading with Python"></a>Database Loading with Python</h2><h2 id="Transforming-and-Cleaning-Data"><a href="#Transforming-and-Cleaning-Data" class="headerlink" title="Transforming and Cleaning Data"></a>Transforming and Cleaning Data</h2><ul>
+<li>Real data is often ‘dirty’<ul>
+<li>􏱤 Important to do some data cleaning and transforming first<br> remember last week, when we had to convert strings to float</li>
+</ul>
+</li>
+<li>􏱤 Typical steps involved:<br>  􏱤 type and name conversion<br>  􏱤 filtering of missing or inconsistent data<br>  􏱤 unifying semantic data representations<br>  􏱤 matching of entries from different sources</li>
+<li><p>􏱤 Later also:<br>􏱤  Rescaling and optional dimensionality reduction</p>
+</li>
+<li><p>ETL Process<br>Capture/Extract - Data Cleansing - Transform - Load</p>
+</li>
+</ul>
+<h2 id="Data-Modeling"><a href="#Data-Modeling" class="headerlink" title="Data Modeling"></a>Data Modeling</h2><p>OLAP: Online Analytical Processing (Data Warehousing Approach)</p>
+<h3 id="Data-Warehousing"><a href="#Data-Warehousing" class="headerlink" title="Data Warehousing"></a>Data Warehousing</h3><h4 id="Defination"><a href="#Defination" class="headerlink" title="Defination"></a>Defination</h4><ul>
+<li>Subject-oriented<br>Organized by subject, not by application 􏱤 Used for analysis, data mining, etc.</li>
+<li>Integrated<br>Constructed by integrating multiple, heterogeneous data sources<br>relationaldatabases,flatfiles,on-linetransactionrecord</li>
+<li>Time Variant<br>Large volume of historical data (Gb, Tb) 􏱤 Time attributes are important</li>
+<li>Non-volatile<br>Updates infrequent or does not occur<br>May be append-only</li>
+</ul>
+<h4 id="Star-Schema"><a href="#Star-Schema" class="headerlink" title="Star Schema"></a>Star Schema</h4><h3 id="Snowflake-Schema"><a href="#Snowflake-Schema" class="headerlink" title="Snowflake Schema"></a>Snowflake Schema</h3><p>some dimensional hierarchy is normalized into a set of smaller dimension tables, forming a shape similar to snowflake</p>
+<h2 id="DB-Creation"><a href="#DB-Creation" class="headerlink" title="DB Creation"></a>DB Creation</h2><h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><h2 id="Data-Loading-Storage"><a href="#Data-Loading-Storage" class="headerlink" title="Data Loading / Storage"></a>Data Loading / Storage</h2>
     </div>
 
     
@@ -309,6 +337,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Exploration-with-Python"><span class="nav-number">1.</span> <span class="nav-text">Data Exploration with Python</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-and-Jupyter-Notebooks"><span class="nav-number">1.1.</span> <span class="nav-text">Python and Jupyter Notebooks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Descriptive-Statistics"><span class="nav-number">1.2.</span> <span class="nav-text">Descriptive Statistics</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visualisation"><span class="nav-number">1.3.</span> <span class="nav-text">Visualisation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Box-plots-and-correlation"><span class="nav-number">1.4.</span> <span class="nav-text">Box plots and correlation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-Data"><span class="nav-number">1.5.</span> <span class="nav-text">Text Data</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Data-Extract-Data-Transformation-and-Storage"><span class="nav-number">2.</span> <span class="nav-text">Data Extract, Data Transformation and Storage</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#New-Scenario"><span class="nav-number">2.1.</span> <span class="nav-text">New Scenario</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Database-Loading-with-Python"><span class="nav-number">2.2.</span> <span class="nav-text">Database Loading with Python</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transforming-and-Cleaning-Data"><span class="nav-number">2.3.</span> <span class="nav-text">Transforming and Cleaning Data</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Modeling"><span class="nav-number">2.4.</span> <span class="nav-text">Data Modeling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-Warehousing"><span class="nav-number">2.4.1.</span> <span class="nav-text">Data Warehousing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Defination"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">Defination</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Star-Schema"><span class="nav-number">2.4.1.2.</span> <span class="nav-text">Star Schema</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Snowflake-Schema"><span class="nav-number">2.4.2.</span> <span class="nav-text">Snowflake Schema</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DB-Creation"><span class="nav-number">2.5.</span> <span class="nav-text">DB Creation</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL"><span class="nav-number">2.5.1.</span> <span class="nav-text">SQL</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Loading-Storage"><span class="nav-number">2.6.</span> <span class="nav-text">Data Loading &#x2F; Storage</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

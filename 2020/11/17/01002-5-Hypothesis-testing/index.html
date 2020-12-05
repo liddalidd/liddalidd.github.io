@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="Hypothesis testing &amp; evaluation Questions: Do two populations differ? Which approach is better? Significance: pairwise t-tests, non- normal data Evaluation: classifier evaluation  Types of Statist">
+<meta property="og:type" content="article">
 <meta property="og:title" content="01002-5:Hypothesis testing">
 <meta property="og:url" content="http://example.com/2020/11/17/01002-5-Hypothesis-testing/index.html">
 <meta property="og:site_name" content="Dong">
+<meta property="og:description" content="Hypothesis testing &amp; evaluation Questions: Do two populations differ? Which approach is better? Significance: pairwise t-tests, non- normal data Evaluation: classifier evaluation  Types of Statist">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-11-17T03:24:55.000Z">
-<meta property="article:modified_time" content="2020-11-21T07:40:24.750Z">
+<meta property="article:modified_time" content="2020-12-02T09:39:28.515Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="DS">
 <meta name="twitter:card" content="summary">
@@ -196,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-21 15:40:24" itemprop="dateModified" datetime="2020-11-21T15:40:24+08:00">2020-11-21</time>
+                <time title="Modified: 2020-12-02 17:39:28" itemprop="dateModified" datetime="2020-12-02T17:39:28+08:00">2020-12-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -226,7 +228,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Hypothesis-testing-amp-evaluation"><a href="#Hypothesis-testing-amp-evaluation" class="headerlink" title="Hypothesis testing &amp; evaluation"></a>Hypothesis testing &amp; evaluation</h1><ul>
+<li>Questions: Do two populations differ? Which approach is better?</li>
+<li>Significance: pairwise t-tests, non- normal data</li>
+<li>Evaluation: classifier evaluation</li>
+</ul>
+<h2 id="Types-of-Statistical-Studies"><a href="#Types-of-Statistical-Studies" class="headerlink" title="Types of Statistical Studies"></a>Types of Statistical Studies</h2><h3 id="Observational-Study"><a href="#Observational-Study" class="headerlink" title="Observational Study:"></a>Observational Study:</h3><h3 id="Experimental-Study"><a href="#Experimental-Study" class="headerlink" title="Experimental Study:"></a>Experimental Study:</h3><h2 id="Setting-up-an-experiment"><a href="#Setting-up-an-experiment" class="headerlink" title="Setting up an experiment"></a>Setting up an experiment</h2><h3 id="Experiment-design"><a href="#Experiment-design" class="headerlink" title="Experiment design"></a>Experiment design</h3><ul>
+<li>Between subjects: Each subject sees one and only one condition</li>
+<li>Within subjects: Subjects see more than one or all conditions</li>
+</ul>
+<h3 id="Types-of-variables"><a href="#Types-of-variables" class="headerlink" title="Types of variables"></a>Types of variables</h3><ul>
+<li>Dependent variable is the measure of interest</li>
+<li>Independent variable is manipulated to observe the effect on dependent variable</li>
+<li>Controlled variables are materials, measurements and me􏰉hod􏰍 􏰉ha􏰉 don􏰰􏰉 change</li>
+</ul>
+<h3 id="Research-question"><a href="#Research-question" class="headerlink" title="Research question"></a>Research question</h3><ul>
+<li>Research question (Q):<br>Asks whether the independent variable has an effect</li>
+<li>Null hypothesis (H0):<br>The assumption that there is no effect</li>
+</ul>
+<h2 id="Statistical-significance-testing"><a href="#Statistical-significance-testing" class="headerlink" title="Statistical significance testing"></a>Statistical significance testing</h2><h3 id="Hypothesis-testing"><a href="#Hypothesis-testing" class="headerlink" title="Hypothesis testing"></a>Hypothesis testing</h3><p>Increase the power of a significance test</p>
+<ul>
+<li>Obtain a larger sample</li>
+<li>Larger N means more reliable statistics</li>
+<li>Less likely to have errors<ul>
+<li>Type I: Reject true H0</li>
+<li>Type II: Fail to reject false H0</li>
+</ul>
+</li>
+</ul>
+<h2 id="Testing-which-approach-is-better-between-subjects"><a href="#Testing-which-approach-is-better-between-subjects" class="headerlink" title="Testing which approach is better between subjects"></a>Testing which approach is better between subjects</h2><p>Scenario: Comparing visual layouts<br>Research question<br>Data/Measurement: User ratings of layouts<br>Generate ratings data<br>Visualise ratings data<br>Setup: Comparing two versions of a display<br>Significance: Unpaired Stu􏰉􏰎dent`s t-test<br>Significance: Mann-Whitney U test</p>
+<h2 id="Testing-whether-groups-differ"><a href="#Testing-whether-groups-differ" class="headerlink" title="Testing whether groups differ"></a>Testing whether groups differ</h2><p>Scenario: Mobile use by generation<br>Research question<br>Data/Measurement: Survey of mobile use<br>Significance: Analysis of variance (ANOVA)<br>Significance: Kruskall-Wallis H-test<br>Setup: Comparing behavior across groups<br>Generate generation data<br>Visualise generation data</p>
+<h2 id="Testing-which-approach-is-better-within-subjects"><a href="#Testing-which-approach-is-better-within-subjects" class="headerlink" title="Testing which approach is better within subjects"></a>Testing which approach is better within subjects</h2><p>Example scenario: Comparing classifiers<br>Research question<br>Task: Spam/ham detection<br>Measurement: Model evaluation<br>Measurement: Accuracy, precision, recall, f1<br>Evaluating Classifier Accuracy:<br>    Holdout<br>    Cross-Validation Methods<br>Significance: Paired Stu􏰉􏰎dent`s t-test<br>Significance: Paired tests for non-parametric data<br>Generate gold and classifier labellings<br>Setup: Comparing classifiers</p>
+
     </div>
 
     
@@ -309,6 +342,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hypothesis-testing-amp-evaluation"><span class="nav-number">1.</span> <span class="nav-text">Hypothesis testing &amp; evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Types-of-Statistical-Studies"><span class="nav-number">1.1.</span> <span class="nav-text">Types of Statistical Studies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Observational-Study"><span class="nav-number">1.1.1.</span> <span class="nav-text">Observational Study:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Experimental-Study"><span class="nav-number">1.1.2.</span> <span class="nav-text">Experimental Study:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setting-up-an-experiment"><span class="nav-number">1.2.</span> <span class="nav-text">Setting up an experiment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Experiment-design"><span class="nav-number">1.2.1.</span> <span class="nav-text">Experiment design</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Types-of-variables"><span class="nav-number">1.2.2.</span> <span class="nav-text">Types of variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Research-question"><span class="nav-number">1.2.3.</span> <span class="nav-text">Research question</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Statistical-significance-testing"><span class="nav-number">1.3.</span> <span class="nav-text">Statistical significance testing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Hypothesis-testing"><span class="nav-number">1.3.1.</span> <span class="nav-text">Hypothesis testing</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing-which-approach-is-better-between-subjects"><span class="nav-number">1.4.</span> <span class="nav-text">Testing which approach is better between subjects</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing-whether-groups-differ"><span class="nav-number">1.5.</span> <span class="nav-text">Testing whether groups differ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Testing-which-approach-is-better-within-subjects"><span class="nav-number">1.6.</span> <span class="nav-text">Testing which approach is better within subjects</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
