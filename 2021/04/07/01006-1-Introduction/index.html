@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Introduction to Machine Learning and Data MiningDATA MINING:Databaes :    Relational data model    SQL    Association rule Artificial intelligence :    Search algorithms Algorithms :    Algorithm desi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01006-1-Introduction.md">
+<meta property="og:url" content="http://example.com/2021/04/07/01006-1-Introduction/index.html">
+<meta property="og:site_name" content="Dong">
+<meta property="og:description" content="Introduction to Machine Learning and Data MiningDATA MINING:Databaes :    Relational data model    SQL    Association rule Artificial intelligence :    Search algorithms Algorithms :    Algorithm desi">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-07T02:22:32.000Z">
+<meta property="article:modified_time" content="2021-04-07T09:17:11.756Z">
+<meta property="article:author" content="Dong">
+<meta property="article:tag" content="ML">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/04/07/01006-1-Introduction/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>01006-1-Introduction.md | Dong</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dong</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/07/01006-1-Introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          01006-1-Introduction.md
+        </h1>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-04-07 10:22:32 / Modified: 17:17:11" itemprop="dateCreated datePublished" datetime="2021-04-07T10:22:32+08:00">2021-04-07</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01006/" itemprop="url" rel="index"><span itemprop="name">01006</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Introduction-to-Machine-Learning-and-Data-Mining"><a href="#Introduction-to-Machine-Learning-and-Data-Mining" class="headerlink" title="Introduction to Machine Learning and Data Mining"></a>Introduction to Machine Learning and Data Mining</h1><p>DATA MINING:<br><strong>Databaes :</strong><br>    Relational data model<br>    SQL<br>    Association rule</p>
+<p><strong>Artificial intelligence :</strong><br>    Search algorithms</p>
+<p><strong>Algorithms :</strong><br>    Algorithm design<br>    Algotithm analysis<br>    Data structures</p>
+<p><strong>Machine Learning :</strong><br>  Classification and clustering algorithms<br>  (Neural networks, decision trees, kNN, SVM, etc.)</p>
+<p><strong>Statistics :</strong><br>    Sampling, estimation, hypothesis testing<br>    Bayes Theorem<br>    Regression Analysis<br>    Time Series Analysis</p>
+<p><strong>Information retrieval :</strong><br>    Similarity measures<br>    Imprecise queries<br>    Text/image/video data<br>    Web search engines</p>
+<h2 id="ML-and-DM-tasks"><a href="#ML-and-DM-tasks" class="headerlink" title="ML and DM tasks"></a>ML and DM tasks</h2><p>Two main types of tasks:<br>    Supervised learning - classification and regression<br>    Unsupervised learning - clustering<br>Others:<br>    Association rule ming<br>    Reinforcement learning<br>    Outlier detection</p>
+<h3 id="Supervised-learning"><a href="#Supervised-learning" class="headerlink" title="Supervised learning"></a>Supervised learning</h3><p>Given: { x , y | x - input vector, y - target output }<br>Task: learn a function that map x-&gt;y and can be used predictively<br>Types:<br>    Classification: the variable to be predicted is categorical<br>    Regression: the variable to be predicted is numeric</p>
+<h3 id="Unsupervised-learning"><a href="#Unsupervised-learning" class="headerlink" title="Unsupervised learning"></a>Unsupervised learning</h3><p>Given:{ x | x - input vectors}<br>Task: group the examples into a finite number of clusters so that $max(S_b)$ and $min(S_w)$</p>
+<h2 id="The-DM-process"><a href="#The-DM-process" class="headerlink" title="The DM process"></a>The DM process</h2><ol>
+<li><p>Business understanding<br> • Investigating the business objectives and requirements<br> • Deciding whether DM can be applied to meet them<br> • Determining what kind of data can be collected to build a deployable model</p>
+</li>
+<li><p>Data understanding<br> • Get an initial dataset; is it suitable for further processing?<br> • If the data quality is poor, collect more data based on more stringent criteria<br> • Gain insights from data and review the objective – can DM be applied?</p>
+</li>
+<li><p>Data preparation<br> • Cleaning: data in real world is:</p>
+<pre><code> • Incomplete, e.g. missing values
+ • Noisy, e.g. containing errors or outliers
+ • Inconsistent, e.g. in codes, names
+ Fill in missing values, smooth noisy data, identify outliers and remove them, resolve inconsistencies
+</code></pre><p> • Transformation – convert to common format; transform to new format; perform normalization, dimensionality reduction and feature selection</p>
+</li>
+<li><p>Modeling<br> building ML models</p>
+</li>
+<li><p>Evaluation<br> • How good is the performance? E.g. accuracy, F1 measure, etc.<br> • Are the patterns meaningful and useful, or just reflecting spurious regularities?<br> • If the performance is poor, reconsider the project and return to step 1)<br> • If the performance is good -&gt; deploy it in practice</p>
+</li>
+<li><p>Deployment<br> • Typically requires integration into a larger software system by software engineers<br> • May be necessary to re-implement the model in a different programming language</p>
+</li>
+</ol>
+<h2 id="Data-Cleaning"><a href="#Data-Cleaning" class="headerlink" title="Data Cleaning"></a>Data Cleaning</h2><h3 id="Noise"><a href="#Noise" class="headerlink" title="Noise"></a>Noise</h3><p>Due to :</p>
+<pre><code>1. distortion of values
+2. addition of spurious examples
+3. inconsistent and duplicate data
+</code></pre><p>Reducing noise 1. and 2.:<br>    • Using signal and image processing and outlier detection techniques before DM<br>    • Using ML algorithms that are more robust to noise – give acceptable results in presence of noise</p>
+<h3 id="Missing-values"><a href="#Missing-values" class="headerlink" title="Missing values"></a>Missing values</h3><p>Methods: </p>
+<pre><code>1. Ignore all examples with missing values
+2. Estimate the missing values by using the remaining values (average or the most common value)
+</code></pre><h2 id="Data-preprocessing"><a href="#Data-preprocessing" class="headerlink" title="Data preprocessing"></a>Data preprocessing</h2><h3 id="Data-aggregation"><a href="#Data-aggregation" class="headerlink" title="Data aggregation"></a>Data aggregation</h3><p>Combining two or more attributes into one<br>purpose:<br>    Data reduction - less memory and computation time<br>    Change of scale - provides high-level view<br>    More stable data</p>
+<h3 id="Dimensionality-reduction"><a href="#Dimensionality-reduction" class="headerlink" title="Dimensionality reduction"></a>Dimensionality reduction</h3><h3 id="Feature-extraction"><a href="#Feature-extraction" class="headerlink" title="Feature extraction"></a>Feature extraction</h3><p>Feature extraction is the creation of features from raw data – very important task<br>May require mapping data to a new space, then extract features</p>
+<h3 id="Feature-subset-selection"><a href="#Feature-subset-selection" class="headerlink" title="Feature subset selection"></a>Feature subset selection</h3><p>The process of removing irrelevant and redundant features and selecting a small set of features that are necessary and sufficient for good classification<br>methods:<br>    Brute force (impossible)<br>    Embedded (decision tree)<br>    Filter  (feature selection)<br>    Wrapper </p>
+<h3 id="Feature-weighting"><a href="#Feature-weighting" class="headerlink" title="Feature weighting"></a>Feature weighting</h3><p>The more important features are assigned a higher weight, the less important – lower. This can be done manually or automatically</p>
+<h3 id="Converting-attributes-from-one-type-to-another"><a href="#Converting-attributes-from-one-type-to-another" class="headerlink" title="Converting attributes from one type to another"></a>Converting attributes from one type to another</h3><p><strong>Discretization</strong>: Converting numeric attributes to nominal.<br>Unsupervised discretization: </p>
+<pre><code>1. equal width
+2. equal frequency
+3. clustering (k-means)
+</code></pre><p>Supervised discretization : – entropy-based<br>    Entropy:<br>        $ entropy(S)=-\sum_i P_i log_2 P_i $<br>        $ totalEntropy = \sum_i^n w_i entropy(S_i) $</p>
+<p><strong>Binarization</strong>:  Converting numeric and nominal attributes to binary attributes.<br>numeric attribute -&gt; categorical -&gt; integer -&gt; binary</p>
+<h3 id="Normalization-and-standardization"><a href="#Normalization-and-standardization" class="headerlink" title="Normalization and standardization"></a>Normalization and standardization</h3><p><strong>min-max sacling</strong> :<br>$ x`=\frac{x-min(x)}{max(x)-min(x)} $</p>
+<p>standardization:<br>$ x`= \frac{x-\miu(x)}{\theta(x)} $</p>
+<h2 id="Similarity-measures"><a href="#Similarity-measures" class="headerlink" title="Similarity measures"></a>Similarity measures</h2><p>two measures:</p>
+<h3 id="Distance"><a href="#Distance" class="headerlink" title="Distance"></a>Distance</h3><p>For numeric attributes:<br>    <strong>Minkowski distance</strong>:<br>    $ D(A,B) = { |a_1-b_1|^q + |a_2-b_2|^q + … + |a_n-b_n|^q +  }^(1/q) $<br>    q=1: Manhattan distance (L1 norm)<br>    q=2: Euclidean distance (L2 norm)<br>For binary vectors:<br>    Simple Matching Coefficient (<strong>SMC</strong>) - matching 1-1 and 0-0 / num. attributes<br>    $ SMC=\frac{f11+f00}{f01+f10+f11+f00} $<br>    SMC is not suitable for sparse data, therefore has an alternative:<br>    <strong>Jaccard coefficient</strong>:<br>        $ J = \frac{f11}{f01+f10+f11} $<br>    <strong>Cosine similarity</strong>: useful for sparse data<br>        $ cos(A, B)= \frac{A \dot B}{||A|| ||B||} $</p>
+<h3 id="Correlation"><a href="#Correlation" class="headerlink" title="Correlation"></a>Correlation</h3><p><strong>Pearson correlation coefficient</strong> :<br>$ corr(x, y) = \frac{covar(x, y)}{std(x)std(y)} $,<br>where: $mean(x) = \frac{\sum_{i=1}^n x_i}{n} $, $std(x) = \sqrt{\frac{\sum_{i=1}^(x_i-mean(x))^2 }{n-1}}$, $covar(x, y) = \frac{1}{n-1} \sum_{i=1}^n(x_i-mean(x))(y_i-mean(y))$</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ML/" rel="tag"># ML</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/16/01005-3-BigData/" rel="prev" title="01005-3:BigData">
+      <i class="fa fa-chevron-left"></i> 01005-3:BigData
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/04/07/01006-2-Nearest-Neighbor-Algorithm/" rel="next" title="01006-2-Nearest Neighbor Algorithm.md">
+      01006-2-Nearest Neighbor Algorithm.md <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction-to-Machine-Learning-and-Data-Mining"><span class="nav-number">1.</span> <span class="nav-text">Introduction to Machine Learning and Data Mining</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ML-and-DM-tasks"><span class="nav-number">1.1.</span> <span class="nav-text">ML and DM tasks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Supervised-learning"><span class="nav-number">1.1.1.</span> <span class="nav-text">Supervised learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unsupervised-learning"><span class="nav-number">1.1.2.</span> <span class="nav-text">Unsupervised learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-DM-process"><span class="nav-number">1.2.</span> <span class="nav-text">The DM process</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-Cleaning"><span class="nav-number">1.3.</span> <span class="nav-text">Data Cleaning</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Noise"><span class="nav-number">1.3.1.</span> <span class="nav-text">Noise</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Missing-values"><span class="nav-number">1.3.2.</span> <span class="nav-text">Missing values</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-preprocessing"><span class="nav-number">1.4.</span> <span class="nav-text">Data preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data-aggregation"><span class="nav-number">1.4.1.</span> <span class="nav-text">Data aggregation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dimensionality-reduction"><span class="nav-number">1.4.2.</span> <span class="nav-text">Dimensionality reduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature-extraction"><span class="nav-number">1.4.3.</span> <span class="nav-text">Feature extraction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature-subset-selection"><span class="nav-number">1.4.4.</span> <span class="nav-text">Feature subset selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature-weighting"><span class="nav-number">1.4.5.</span> <span class="nav-text">Feature weighting</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Converting-attributes-from-one-type-to-another"><span class="nav-number">1.4.6.</span> <span class="nav-text">Converting attributes from one type to another</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normalization-and-standardization"><span class="nav-number">1.4.7.</span> <span class="nav-text">Normalization and standardization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Similarity-measures"><span class="nav-number">1.5.</span> <span class="nav-text">Similarity measures</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Distance"><span class="nav-number">1.5.1.</span> <span class="nav-text">Distance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Correlation"><span class="nav-number">1.5.2.</span> <span class="nav-text">Correlation</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liddalidd" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liddalidd" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liddaalidd@163.com" title="E-Mail → mailto:liddaalidd@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
