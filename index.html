@@ -197,7 +197,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-16 12:34:55" itemprop="dateModified" datetime="2020-11-16T12:34:55+08:00">2020-11-16</time>
+                <time title="Modified: 2021-04-07 10:18:45" itemprop="dateModified" datetime="2021-04-07T10:18:45+08:00">2021-04-07</time>
               </span>
 
           
@@ -211,9 +211,312 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Blog-categerories"><a href="#Blog-categerories" class="headerlink" title="Blog categerories"></a>Blog categerories</h3><p>01001: CS-Statistics<br>01002: CS-Data Science<br>01003: CS-Database Management System<br>01004: CS-Algorithm<br>01005: CS-ML-others</p>
+          <h3 id="Blog-categerories"><a href="#Blog-categerories" class="headerlink" title="Blog categerories"></a>Blog categerories</h3><p>01001: CS-Introduction to Statistics<br>01002: CS-Principles of Data Science<br>01003: CS-Database Management System<br>01004: CS-Algorithm<br>01005: CS-ML-others<br>01006: CS-Introduction to ML and DM<br>01007: CS-NLP<br>01008: CS-Computational Statistical Methods<br>01009: CS-Cloud Computing</p>
 <p>…<br>TBD</p>
 
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/16/01005-3-BigData/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/16/01005-3-BigData/" class="post-title-link" itemprop="url">01005-3:BigData</a>
+        </h2>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-12-16 19:16:23" itemprop="dateCreated datePublished" datetime="2020-12-16T19:16:23+08:00">2020-12-16</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-01-10 17:36:03" itemprop="dateModified" datetime="2021-01-10T17:36:03+08:00">2021-01-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01005/" itemprop="url" rel="index"><span itemprop="name">01005</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Hadoop项目结构"><a href="#Hadoop项目结构" class="headerlink" title="Hadoop项目结构"></a>Hadoop项目结构</h2><h2 id="Hadoop集群部署"><a href="#Hadoop集群部署" class="headerlink" title="Hadoop集群部署"></a>Hadoop集群部署</h2><h3 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h3><ul>
+<li>NameNode  直接存储到内存<ul>
+<li>FsImage <ul>
+<li>文件的复制等级、修改和访问时间、访问权限、块大小以及组成文件的块</li>
+</ul>
+</li>
+<li>EditLog<ul>
+<li>各项操作日志</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DataNode</li>
+<li>SecondaryNameNode 作为冷备份<br>解决EditLog不断增大的问题</li>
+</ul>
+<h4 id="实现目标"><a href="#实现目标" class="headerlink" title="实现目标"></a>实现目标</h4><ul>
+<li>兼容廉价的硬件设备</li>
+<li>实现流数据读写</li>
+<li>支持大数据集</li>
+<li>支持简单的文件模型</li>
+<li>强大的跨平台兼容性</li>
+</ul>
+<h4 id="自身局限"><a href="#自身局限" class="headerlink" title="自身局限"></a>自身局限</h4><ul>
+<li>不适合低延迟数据访问（实时性处理需求）</li>
+<li>无法高效存储大量小文件</li>
+<li>不支持多用户写入及任意修改文件</li>
+</ul>
+<h3 id="存储原理"><a href="#存储原理" class="headerlink" title="存储原理"></a>存储原理</h3><ul>
+<li>冗余存储（一般三个副本）<ul>
+<li>加快数据传输速度</li>
+<li>很容易检查数据错误</li>
+<li>保证数据可靠性</li>
+</ul>
+</li>
+</ul>
+<h3 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h3><p>JobTracker<br>TaskTracker</p>
+<h2 id="HBase"><a href="#HBase" class="headerlink" title="HBase"></a>HBase</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><h4 id="HBase-和关系型数据库的区别"><a href="#HBase-和关系型数据库的区别" class="headerlink" title="HBase 和关系型数据库的区别"></a>HBase 和关系型数据库的区别</h4><p>数据类型    RM          字符串<br>数据操作    多            字符串<br>存储模式    基于行     基于列<br>数据索引    复杂<br>数据维护    覆盖旧值    保留<br>可伸缩性    纵向扩展    横向扩展</p>
+<h3 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h3><p>行键<br>列族<br>    支持动态扩展<br>    保留旧的版本<br>列限定符<br>单元格<br>时间戳</p>
+<p>列式存储：数据类型相同，高数据压缩率  —分析型操作<br>行式存储：数据类型不同，低数据压缩率  —事务型操作</p>
+<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><h4 id="功能组件"><a href="#功能组件" class="headerlink" title="功能组件"></a>功能组件</h4><p>库函数<br>Master服务器<br>    增删改查、负载均衡、分裂合并、重新分配<br>Region服务器</p>
+<h4 id="三层结构"><a href="#三层结构" class="headerlink" title="三层结构"></a>三层结构</h4><p>ZooKeeper 文件：记录ROOT表的位置<br>ROOT表 ：记录META表中的Region位置<br>META表 ：记录用户数据表的Region位置</p>
+<h3 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h3><p>写：缓存 - MemStore - 写日志(HLog)<br>读：缓存 - MemStore - StroeFile</p>
+<h3 id="应用方案"><a href="#应用方案" class="headerlink" title="应用方案"></a>应用方案</h3><p>性能优化方法<br>    时间戳：Long.MAX_VALUE - timestamp作为行键<br>    读写性能：表放到Region缓存里<br>    存储：设置最大版本数<br>                TimeToLive<br>检测性能：<br>    Master-status<br>    Ganglia<br>    OpenTSDB<br>    Ambari</p>
+<p>SQL:<br>    Hive<br>    Phoenix</p>
+<h2 id="NoSQL"><a href="#NoSQL" class="headerlink" title="NoSQL"></a>NoSQL</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><p>灵活的可扩展性<br>灵活的数据模型<br>和云计算的结合</p>
+<h3 id="与RDBMS的比较"><a href="#与RDBMS的比较" class="headerlink" title="与RDBMS的比较"></a>与RDBMS的比较</h3><p>关系型数据库  NoSQL<br>数据库原理       有完备的代数理论    缺乏<br>数据规模           难以横向扩展      高水平可扩展性<br>数据库模式       严格遵守            模型灵活<br>查询效率           适当量级效率高 复杂查询效率差<br>事务一致性       ACID事务模型    不能保持强<br>数据完整性       完备机制            不能<br>可扩展性           差       好<br>可用性               规模增大可用性下降  高可用性<br>标准化               完善    未形成行业标准<br>技术支持            强大      发展初期<br>可维护                 管理员维护       较为复杂</p>
+<h3 id="四大类型"><a href="#四大类型" class="headerlink" title="四大类型"></a>四大类型</h3><ul>
+<li><p>键值数据库<br>redis<br>频繁读写<br>理想的缓冲层解决方案</p>
+</li>
+<li><p>列族数据库<br>hbase</p>
+</li>
+<li>图数据库<br>Neo4j<br>高度互相关联关系</li>
+<li>文档数据库<br>mongoDB<br>json格式</li>
+</ul>
+<h3 id="理论基石"><a href="#理论基石" class="headerlink" title="理论基石"></a>理论基石</h3><ul>
+<li><p>CAP<br>Consistency一致性<br>Availablity 可用性<br>Partition toleration 分区容忍性<br>CA：MySQL<br>CP：MongoDB, Hbase, Redis, Neo4j<br>AP：Cassandra</p>
+</li>
+<li><p>BASE<br>Basically Availble Soft-state &amp; Eventual consistency<br>基本可用、软状态、最终一致性</p>
+</li>
+<li><p>最终一致性<br>  因果一致性<br>  “读己之所写”一致性<br>  单调读一致性<br>  会话一致性<br>  单调写一致性</p>
+</li>
+</ul>
+<p>N：冗余份数<br>W：已写完的节点数<br>R：需要读取的节点数<br>W+R&gt;N: 强一致性<br>W+R&lt;=N: 弱一致性</p>
+<h3 id="从NoSQL到NewSQL"><a href="#从NoSQL到NewSQL" class="headerlink" title="从NoSQL到NewSQL"></a>从NoSQL到NewSQL</h3><p>分析型：NewSQL<br>事务型：OldSQL<br>互联网型：NoSQL </p>
+<h2 id="云数据库"><a href="#云数据库" class="headerlink" title="云数据库"></a>云数据库</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><ul>
+<li>云计算优势：<br>按需服务、随时服务、通用性、高可靠性、极其廉价、超大规模、</li>
+<li>云数据库优良特性：<br>动态可扩展、较低的使用代价、易用性、高可用性、免维护、高性能、安全</li>
+</ul>
+<h3 id="UMP系统"><a href="#UMP系统" class="headerlink" title="UMP系统"></a>UMP系统</h3><ul>
+<li>原则：</li>
+</ul>
+<ol>
+<li>单一对外访问入口</li>
+<li>消除单点故障</li>
+<li>良好的可伸缩性</li>
+<li>资源的相互隔离</li>
+</ol>
+<ul>
+<li><p>系统架构：<br>Mnesia：分布式数据管理系统，支持事务<br>RabbitMQ：消息队列<br>ZooKeeper：高效的协调服务：全局配置服务器、提供分布式锁、监控MySQL实例<br>LVS：实现集群内部的负载均衡<br>Controller服务器：集群成员管理、元数据存储、MySQL实例管理、故障恢复、备份迁移扩容<br>Web管理台：提供系统管理界面<br>Proxy服务器：向用户提供访问MySQL的服务<br>Agent服务器：管理物理机上的MySQL实例<br>日志分析服务器：对整个日志分析<br>信息统计服务器：用户连接数、QPS、MySQL实例进程状态<br>愚公系统：数据迁移</p>
+</li>
+<li><p>系统功能：<br>容灾：主库、从库<br>读写分离：写-主，读-主/从<br>分库分表：proxy解析MySQL，分发到对应的实例上，接收执行结果<br>资源管理：资源池机制进行管理</p>
+</li>
+</ul>
+<h3 id="AWS"><a href="#AWS" class="headerlink" title="AWS"></a>AWS</h3><h3 id="SQL-Azure"><a href="#SQL-Azure" class="headerlink" title="SQL Azure"></a>SQL Azure</h3><h2 id="MapReduce-1"><a href="#MapReduce-1" class="headerlink" title="MapReduce"></a>MapReduce</h2><h3 id="模型简介"><a href="#模型简介" class="headerlink" title="模型简介"></a>模型简介</h3><p>计算向数据靠拢</p>
+<h3 id="体系结构"><a href="#体系结构" class="headerlink" title="体系结构"></a>体系结构</h3><p>Client<br>JobTracker：资源监控、作业调度<br>TaskSheduler：<br>TaskTracker ：执行具体任务</p>
+<h3 id="工作流程："><a href="#工作流程：" class="headerlink" title="工作流程："></a>工作流程：</h3><p>InputFormat<br>Split<br>RR(Record Read)<br>Map<br>Shuffle<br>Reduce<br>OutputFormat</p>
+<h3 id="Shuffle"><a href="#Shuffle" class="headerlink" title="Shuffle"></a>Shuffle</h3><ul>
+<li>Map Shuffle:</li>
+</ul>
+<ol>
+<li>输入数据和执行Map任务</li>
+<li>写入缓存</li>
+<li>溢写（分区、排序、合并）</li>
+<li>文件归并</li>
+</ol>
+<ul>
+<li>Reduce Shuffle:</li>
+</ul>
+<ol>
+<li>领取数据</li>
+<li>归并数据</li>
+<li>把数据输入给Reduce任务</li>
+</ol>
+<h3 id="执行过程"><a href="#执行过程" class="headerlink" title="执行过程"></a>执行过程</h3><p>程序部署<br>分配Map任务<br>读数据<br>本地写数据<br>远程读数据<br>写数据</p>
+<h2 id="Hadoop-再探讨"><a href="#Hadoop-再探讨" class="headerlink" title="Hadoop 再探讨"></a>Hadoop 再探讨</h2><h3 id="Hadoop-2-0"><a href="#Hadoop-2-0" class="headerlink" title="Hadoop 2.0"></a>Hadoop 2.0</h3><h4 id="Hadoop-HA-High-Availablity"><a href="#Hadoop-HA-High-Availablity" class="headerlink" title="Hadoop HA (High Availablity)"></a>Hadoop HA (High Availablity)</h4><p>Zookeeper: 管理active / standby (热备份) NameNode</p>
+<h4 id="Hadoop-Federation"><a href="#Hadoop-Federation" class="headerlink" title="Hadoop Federation"></a>Hadoop Federation</h4><p>解决HDFS集群扩展性问题、性能更高效、良好的隔离性</p>
+<h3 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h3><h4 id="MapReduce-1-0"><a href="#MapReduce-1-0" class="headerlink" title="MapReduce 1.0"></a>MapReduce 1.0</h4><p>缺陷：单点故障、JobTracker 任务过重、容易内存溢出、资源化分不合理</p>
+<h4 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h4><p>ResourceManager: 资源管理<br>ApplicationManager: 任务调度、任务监控<br>NodeManager: TaskTracker</p>
+<h4 id="体系结构-1"><a href="#体系结构-1" class="headerlink" title="体系结构"></a>体系结构</h4><p>ResourceManager：处理客户端请求、启动/监控ApplicationManager、监控NodeManager、资源分配与调度<br>ApplicationManager：为应用程序申请资源，分配任务、任务调度、监控与容错<br>NodeManager: 单个节点的资源管理、处理命令</p>
+<h4 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h4><ol>
+<li>向yarn提交应用程序；</li>
+<li>ResourceManager接受处理、分配容器并启动ApplicationManager；</li>
+<li>ApplicationManager创建后向ResourceManager注册；</li>
+<li>ApplicationManager轮询 向ResourceManager申请资源；</li>
+<li>ResourceManager以容器的形式对ApplicationManager分配资源；</li>
+<li>在容器中启动任务（分配Map/Reduce 任务）；</li>
+<li>各个任务向ApplicationManager汇报状态和进度；</li>
+<li>运行完成后，ApplicationManager向ResourceManager的应用程序管理器注销并关闭自己。</li>
+</ol>
+<h3 id="Hadoop生态系统组件"><a href="#Hadoop生态系统组件" class="headerlink" title="Hadoop生态系统组件"></a>Hadoop生态系统组件</h3><h4 id="Pig"><a href="#Pig" class="headerlink" title="Pig"></a>Pig</h4><p>Pig Latin 类似SQL</p>
+<h4 id="Tez"><a href="#Tez" class="headerlink" title="Tez"></a>Tez</h4><p>支持DAG作业的计算框架<br>可去除工作流中多余的Map阶段、减少写入HDFS过程</p>
+<h4 id="Spark"><a href="#Spark" class="headerlink" title="Spark"></a>Spark</h4><p>可应用于大规模数据处理的快速通用引擎</p>
+<h4 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h4><p>作为数据交换中枢<br>高吞吐量的分布式发布订阅消息，可满足在线实时处理和批量离线处理</p>
+<h2 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h2><h3 id="数据仓库"><a href="#数据仓库" class="headerlink" title="数据仓库"></a>数据仓库</h3><p>面向主题的、集成的、相对稳定的、反映历史变化的数据集合，用于支持管理决策</p>
+<h3 id="Hive-1"><a href="#Hive-1" class="headerlink" title="Hive"></a>Hive</h3><p>不支持数据存储和处理</p>
+<ol>
+<li>采用批处理方式处理海量数据</li>
+<li>提供了一系例对数据进行ETL的工具<h4 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a>系统架构</h4></li>
+</ol>
+<ul>
+<li>对外访问接口<br>CLI<br>HWI<br>JDBC ODBC<br>Thrift Server</li>
+<li>驱动模块<br>编译器、优化器、执行器</li>
+<li>元数据存储模块<br>独立的关系型数据库</li>
+</ul>
+<h4 id="Hive-HA基本原理"><a href="#Hive-HA基本原理" class="headerlink" title="Hive HA基本原理"></a>Hive HA基本原理</h4><p>设置多个Hive实例构成一个资源池<br>HA Proxy -&gt; 逻辑可用性测试 -&gt; HA Proxy  对列入黑名单的实例进行统一处理</p>
+<h3 id="SQL转换成MapReduce作业原理"><a href="#SQL转换成MapReduce作业原理" class="headerlink" title="SQL转换成MapReduce作业原理"></a>SQL转换成MapReduce作业原理</h3><ul>
+<li>join操作</li>
+</ul>
+<ol>
+<li>编写Map处理逻辑</li>
+<li>Map处理逻辑输入关系数据库的表</li>
+<li>通过Map对他进行转换</li>
+</ol>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><p>输入 -&gt; SQL语句 -&gt; 抽象语法树 -&gt; 查询块 -&gt; 逻辑查询计划 -&gt;  优化合并、重写逻辑查询计划 -&gt; MapReduce   -&gt; 输出</p>
+<h3 id="Impala"><a href="#Impala" class="headerlink" title="Impala"></a>Impala</h3><h4 id="系统架构-1"><a href="#系统架构-1" class="headerlink" title="系统架构"></a>系统架构</h4><p> Impalad：负责具体的相关查询任务</p>
+<pre><code>- Query Planner + Query Coordinator + Query Exec Engine 
+- 给其他Impalad分配任务及执行结果汇总
+</code></pre><p> State Store：元数据管理和状态信息维护</p>
+<pre><code>- 收集分布在各个集群中的Impalad进程的资源信息用于查询调度
+</code></pre><p> CLI：用户访问接口 </p>
+<h4 id="查询执行过程"><a href="#查询执行过程" class="headerlink" title="查询执行过程"></a>查询执行过程</h4><ol>
+<li>注册和订阅Impalad进程</li>
+<li>提交查询</li>
+<li>获取元数据和数据地址信息</li>
+<li>分发查询任务</li>
+<li>汇聚结果</li>
+<li>返回结果</li>
+</ol>
+<h4 id="Hive-VS-Impala"><a href="#Hive-VS-Impala" class="headerlink" title="Hive VS Impala"></a>Hive VS Impala</h4><p>Hive： 长时间的批处理查询分析、内存放不下会使用外存<br>Impala：实时交互式SQL查询（不经过MapReduce）、不会利用外存</p>
+<h2 id="Spark-1"><a href="#Spark-1" class="headerlink" title="Spark"></a>Spark</h2><h2 id="流计算"><a href="#流计算" class="headerlink" title="流计算"></a>流计算</h2><h2 id="Flink"><a href="#Flink" class="headerlink" title="Flink"></a>Flink</h2><h2 id="图计算"><a href="#图计算" class="headerlink" title="图计算"></a>图计算</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/12/16/01005-2-Data-Mining/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/16/01005-2-Data-Mining/" class="post-title-link" itemprop="url">01005-2:Data Mining</a>
+        </h2>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-12-16 19:14:52 / Modified: 19:16:39" itemprop="dateCreated datePublished" datetime="2020-12-16T19:14:52+08:00">2020-12-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01005/" itemprop="url" rel="index"><span itemprop="name">01005</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
       
     </div>
 
@@ -931,193 +1234,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/17/01002-5-Hypothesis-testing/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dong">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/17/01002-5-Hypothesis-testing/" class="post-title-link" itemprop="url">01002-5:Hypothesis testing</a>
-        </h2>
-
-        <div class="post-meta">
-          
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-11-17 11:24:55" itemprop="dateCreated datePublished" datetime="2020-11-17T11:24:55+08:00">2020-11-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-02 17:39:28" itemprop="dateModified" datetime="2020-12-02T17:39:28+08:00">2020-12-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/01002/" itemprop="url" rel="index"><span itemprop="name">01002</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hypothesis-testing-amp-evaluation"><a href="#Hypothesis-testing-amp-evaluation" class="headerlink" title="Hypothesis testing &amp; evaluation"></a>Hypothesis testing &amp; evaluation</h1><ul>
-<li>Questions: Do two populations differ? Which approach is better?</li>
-<li>Significance: pairwise t-tests, non- normal data</li>
-<li>Evaluation: classifier evaluation</li>
-</ul>
-<h2 id="Types-of-Statistical-Studies"><a href="#Types-of-Statistical-Studies" class="headerlink" title="Types of Statistical Studies"></a>Types of Statistical Studies</h2><h3 id="Observational-Study"><a href="#Observational-Study" class="headerlink" title="Observational Study:"></a>Observational Study:</h3><h3 id="Experimental-Study"><a href="#Experimental-Study" class="headerlink" title="Experimental Study:"></a>Experimental Study:</h3><h2 id="Setting-up-an-experiment"><a href="#Setting-up-an-experiment" class="headerlink" title="Setting up an experiment"></a>Setting up an experiment</h2><h3 id="Experiment-design"><a href="#Experiment-design" class="headerlink" title="Experiment design"></a>Experiment design</h3><ul>
-<li>Between subjects: Each subject sees one and only one condition</li>
-<li>Within subjects: Subjects see more than one or all conditions</li>
-</ul>
-<h3 id="Types-of-variables"><a href="#Types-of-variables" class="headerlink" title="Types of variables"></a>Types of variables</h3><ul>
-<li>Dependent variable is the measure of interest</li>
-<li>Independent variable is manipulated to observe the effect on dependent variable</li>
-<li>Controlled variables are materials, measurements and me􏰉hod􏰍 􏰉ha􏰉 don􏰰􏰉 change</li>
-</ul>
-<h3 id="Research-question"><a href="#Research-question" class="headerlink" title="Research question"></a>Research question</h3><ul>
-<li>Research question (Q):<br>Asks whether the independent variable has an effect</li>
-<li>Null hypothesis (H0):<br>The assumption that there is no effect</li>
-</ul>
-<h2 id="Statistical-significance-testing"><a href="#Statistical-significance-testing" class="headerlink" title="Statistical significance testing"></a>Statistical significance testing</h2><h3 id="Hypothesis-testing"><a href="#Hypothesis-testing" class="headerlink" title="Hypothesis testing"></a>Hypothesis testing</h3><p>Increase the power of a significance test</p>
-<ul>
-<li>Obtain a larger sample</li>
-<li>Larger N means more reliable statistics</li>
-<li>Less likely to have errors<ul>
-<li>Type I: Reject true H0</li>
-<li>Type II: Fail to reject false H0</li>
-</ul>
-</li>
-</ul>
-<h2 id="Testing-which-approach-is-better-between-subjects"><a href="#Testing-which-approach-is-better-between-subjects" class="headerlink" title="Testing which approach is better between subjects"></a>Testing which approach is better between subjects</h2><p>Scenario: Comparing visual layouts<br>Research question<br>Data/Measurement: User ratings of layouts<br>Generate ratings data<br>Visualise ratings data<br>Setup: Comparing two versions of a display<br>Significance: Unpaired Stu􏰉􏰎dent`s t-test<br>Significance: Mann-Whitney U test</p>
-<h2 id="Testing-whether-groups-differ"><a href="#Testing-whether-groups-differ" class="headerlink" title="Testing whether groups differ"></a>Testing whether groups differ</h2><p>Scenario: Mobile use by generation<br>Research question<br>Data/Measurement: Survey of mobile use<br>Significance: Analysis of variance (ANOVA)<br>Significance: Kruskall-Wallis H-test<br>Setup: Comparing behavior across groups<br>Generate generation data<br>Visualise generation data</p>
-<h2 id="Testing-which-approach-is-better-within-subjects"><a href="#Testing-which-approach-is-better-within-subjects" class="headerlink" title="Testing which approach is better within subjects"></a>Testing which approach is better within subjects</h2><p>Example scenario: Comparing classifiers<br>Research question<br>Task: Spam/ham detection<br>Measurement: Model evaluation<br>Measurement: Accuracy, precision, recall, f1<br>Evaluating Classifier Accuracy:<br>    Holdout<br>    Cross-Validation Methods<br>Significance: Paired Stu􏰉􏰎dent`s t-test<br>Significance: Paired tests for non-parametric data<br>Generate gold and classifier labellings<br>Setup: Comparing classifiers</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/17/01002-4-Querying-and-summarising-data/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dong">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/17/01002-4-Querying-and-summarising-data/" class="post-title-link" itemprop="url">01002-4:Querying and summarising data</a>
-        </h2>
-
-        <div class="post-meta">
-          
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-11-17 11:24:35" itemprop="dateCreated datePublished" datetime="2020-11-17T11:24:35+08:00">2020-11-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-12-02 17:14:54" itemprop="dateModified" datetime="2020-12-02T17:14:54+08:00">2020-12-02</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/01002/" itemprop="url" rel="index"><span itemprop="name">01002</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Querying-and-Summarising-Data-with-SQL"><a href="#Querying-and-Summarising-Data-with-SQL" class="headerlink" title="Querying and Summarising Data with SQL"></a>Querying and Summarising Data with SQL</h1><ul>
-<li>Data Gathering reprise</li>
-<li>SQL querying</li>
-<li>Summarising data with SQL</li>
-<li>Statistic functions support in SQL</li>
-</ul>
-<h2 id="Data-Loading-Storage"><a href="#Data-Loading-Storage" class="headerlink" title="Data Loading / Storage"></a>Data Loading / Storage</h2><h2 id="Querying-Data-with-SQL"><a href="#Querying-Data-with-SQL" class="headerlink" title="Querying Data with SQL"></a>Querying Data with SQL</h2><h2 id="Gathering-Data-for-Visualization"><a href="#Gathering-Data-for-Visualization" class="headerlink" title="Gathering Data for Visualization"></a>Gathering Data for Visualization</h2>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1187,7 +1303,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1235,7 +1351,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>

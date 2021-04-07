@@ -160,6 +160,193 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/17/01002-5-Hypothesis-testing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/17/01002-5-Hypothesis-testing/" class="post-title-link" itemprop="url">01002-5:Hypothesis testing</a>
+        </h2>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-17 11:24:55" itemprop="dateCreated datePublished" datetime="2020-11-17T11:24:55+08:00">2020-11-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-02 17:39:28" itemprop="dateModified" datetime="2020-12-02T17:39:28+08:00">2020-12-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01002/" itemprop="url" rel="index"><span itemprop="name">01002</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hypothesis-testing-amp-evaluation"><a href="#Hypothesis-testing-amp-evaluation" class="headerlink" title="Hypothesis testing &amp; evaluation"></a>Hypothesis testing &amp; evaluation</h1><ul>
+<li>Questions: Do two populations differ? Which approach is better?</li>
+<li>Significance: pairwise t-tests, non- normal data</li>
+<li>Evaluation: classifier evaluation</li>
+</ul>
+<h2 id="Types-of-Statistical-Studies"><a href="#Types-of-Statistical-Studies" class="headerlink" title="Types of Statistical Studies"></a>Types of Statistical Studies</h2><h3 id="Observational-Study"><a href="#Observational-Study" class="headerlink" title="Observational Study:"></a>Observational Study:</h3><h3 id="Experimental-Study"><a href="#Experimental-Study" class="headerlink" title="Experimental Study:"></a>Experimental Study:</h3><h2 id="Setting-up-an-experiment"><a href="#Setting-up-an-experiment" class="headerlink" title="Setting up an experiment"></a>Setting up an experiment</h2><h3 id="Experiment-design"><a href="#Experiment-design" class="headerlink" title="Experiment design"></a>Experiment design</h3><ul>
+<li>Between subjects: Each subject sees one and only one condition</li>
+<li>Within subjects: Subjects see more than one or all conditions</li>
+</ul>
+<h3 id="Types-of-variables"><a href="#Types-of-variables" class="headerlink" title="Types of variables"></a>Types of variables</h3><ul>
+<li>Dependent variable is the measure of interest</li>
+<li>Independent variable is manipulated to observe the effect on dependent variable</li>
+<li>Controlled variables are materials, measurements and me􏰉hod􏰍 􏰉ha􏰉 don􏰰􏰉 change</li>
+</ul>
+<h3 id="Research-question"><a href="#Research-question" class="headerlink" title="Research question"></a>Research question</h3><ul>
+<li>Research question (Q):<br>Asks whether the independent variable has an effect</li>
+<li>Null hypothesis (H0):<br>The assumption that there is no effect</li>
+</ul>
+<h2 id="Statistical-significance-testing"><a href="#Statistical-significance-testing" class="headerlink" title="Statistical significance testing"></a>Statistical significance testing</h2><h3 id="Hypothesis-testing"><a href="#Hypothesis-testing" class="headerlink" title="Hypothesis testing"></a>Hypothesis testing</h3><p>Increase the power of a significance test</p>
+<ul>
+<li>Obtain a larger sample</li>
+<li>Larger N means more reliable statistics</li>
+<li>Less likely to have errors<ul>
+<li>Type I: Reject true H0</li>
+<li>Type II: Fail to reject false H0</li>
+</ul>
+</li>
+</ul>
+<h2 id="Testing-which-approach-is-better-between-subjects"><a href="#Testing-which-approach-is-better-between-subjects" class="headerlink" title="Testing which approach is better between subjects"></a>Testing which approach is better between subjects</h2><p>Scenario: Comparing visual layouts<br>Research question<br>Data/Measurement: User ratings of layouts<br>Generate ratings data<br>Visualise ratings data<br>Setup: Comparing two versions of a display<br>Significance: Unpaired Stu􏰉􏰎dent`s t-test<br>Significance: Mann-Whitney U test</p>
+<h2 id="Testing-whether-groups-differ"><a href="#Testing-whether-groups-differ" class="headerlink" title="Testing whether groups differ"></a>Testing whether groups differ</h2><p>Scenario: Mobile use by generation<br>Research question<br>Data/Measurement: Survey of mobile use<br>Significance: Analysis of variance (ANOVA)<br>Significance: Kruskall-Wallis H-test<br>Setup: Comparing behavior across groups<br>Generate generation data<br>Visualise generation data</p>
+<h2 id="Testing-which-approach-is-better-within-subjects"><a href="#Testing-which-approach-is-better-within-subjects" class="headerlink" title="Testing which approach is better within subjects"></a>Testing which approach is better within subjects</h2><p>Example scenario: Comparing classifiers<br>Research question<br>Task: Spam/ham detection<br>Measurement: Model evaluation<br>Measurement: Accuracy, precision, recall, f1<br>Evaluating Classifier Accuracy:<br>    Holdout<br>    Cross-Validation Methods<br>Significance: Paired Stu􏰉􏰎dent`s t-test<br>Significance: Paired tests for non-parametric data<br>Generate gold and classifier labellings<br>Setup: Comparing classifiers</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/17/01002-4-Querying-and-summarising-data/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/17/01002-4-Querying-and-summarising-data/" class="post-title-link" itemprop="url">01002-4:Querying and summarising data</a>
+        </h2>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-17 11:24:35" itemprop="dateCreated datePublished" datetime="2020-11-17T11:24:35+08:00">2020-11-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-02 17:14:54" itemprop="dateModified" datetime="2020-12-02T17:14:54+08:00">2020-12-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01002/" itemprop="url" rel="index"><span itemprop="name">01002</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Querying-and-Summarising-Data-with-SQL"><a href="#Querying-and-Summarising-Data-with-SQL" class="headerlink" title="Querying and Summarising Data with SQL"></a>Querying and Summarising Data with SQL</h1><ul>
+<li>Data Gathering reprise</li>
+<li>SQL querying</li>
+<li>Summarising data with SQL</li>
+<li>Statistic functions support in SQL</li>
+</ul>
+<h2 id="Data-Loading-Storage"><a href="#Data-Loading-Storage" class="headerlink" title="Data Loading / Storage"></a>Data Loading / Storage</h2><h2 id="Querying-Data-with-SQL"><a href="#Querying-Data-with-SQL" class="headerlink" title="Querying Data with SQL"></a>Querying Data with SQL</h2><h2 id="Gathering-Data-for-Visualization"><a href="#Gathering-Data-for-Visualization" class="headerlink" title="Gathering Data for Visualization"></a>Gathering Data for Visualization</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/17/01002-3-Cleaning-and-storing-data/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -774,156 +961,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/16/01001-7-Confidence-intervals/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dong">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/16/01001-7-Confidence-intervals/" class="post-title-link" itemprop="url">01001-7:Confidence intervals</a>
-        </h2>
-
-        <div class="post-meta">
-          
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2020-11-16 12:39:13" itemprop="dateCreated datePublished" datetime="2020-11-16T12:39:13+08:00">2020-11-16</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-11-28 11:14:22" itemprop="dateModified" datetime="2020-11-28T11:14:22+08:00">2020-11-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/01001/" itemprop="url" rel="index"><span itemprop="name">01001</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Confidence-intervals"><a href="#Confidence-intervals" class="headerlink" title="Confidence intervals"></a>Confidence intervals</h1><h2 id="Estimation"><a href="#Estimation" class="headerlink" title="Estimation"></a>Estimation</h2><h3 id="Point-Estimation"><a href="#Point-Estimation" class="headerlink" title="Point Estimation"></a>Point Estimation</h3><h3 id="Interval-Estimation"><a href="#Interval-Estimation" class="headerlink" title="Interval Estimation"></a>Interval Estimation</h3><h4 id="Z-interval-sigma-is-known"><a href="#Z-interval-sigma-is-known" class="headerlink" title="Z-interval ( $\sigma$  is known)"></a>Z-interval ( $\sigma$  is known)</h4><p>Interval estimator of $\mu$:</p>
-<p>$\overline X\pm Z_{\alpha/2}\frac{\sigma}{\sqrt{n}}$</p>
-<h4 id="T-interval-sigma-is-unknown"><a href="#T-interval-sigma-is-unknown" class="headerlink" title="T-interval ( $\sigma$  is unknown)"></a>T-interval ( $\sigma$  is <strong>unknown</strong>)</h4><p>Interval estimator of $\mu$:</p>
-<p>$\overline X\pm t_{\alpha/2}\frac{s}{\sqrt{n}}$ ,df=n-1</p>
-<h4 id="Z-Interval-for-p-binomial-conditions"><a href="#Z-Interval-for-p-binomial-conditions" class="headerlink" title="Z-Interval for p (binomial conditions)"></a>Z-Interval for p (binomial conditions)</h4><p>The sample size is sufficiently large; i.e., <strong>n &gt; 25, np &gt; 5, and nq &gt; 5</strong><br>Interval estimator of p:</p>
-<p>$\hat p\pm Z_{\alpha/2}\sqrt{\frac{\hat p \hat q}{n}}$</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/16/01001-6-Goodness-of-fit-tests/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Dong">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dong">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/16/01001-6-Goodness-of-fit-tests/" class="post-title-link" itemprop="url">01001-6:Goodness of fit tests</a>
-        </h2>
-
-        <div class="post-meta">
-          
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-11-16 12:38:49 / Modified: 12:42:19" itemprop="dateCreated datePublished" datetime="2020-11-16T12:38:49+08:00">2020-11-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/01001/" itemprop="url" rel="index"><span itemprop="name">01001</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -993,7 +1030,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1041,7 +1078,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1120,59 +1157,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
