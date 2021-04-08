@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="01006-5-Decision Trees">
+  <meta name="description" content="Decision TreesConstructing decision trees&amp;emsp;     • Strategy: top-down learning using recursive divide-and-conquer process:&amp;emsp; &amp;emsp;         • First: Select the best attribute for root node and">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01006-5-Decision Trees &amp; Ensemble methods">
 <meta property="og:url" content="http://example.com/2021/04/07/01006-5-Decision-Trees/index.html">
 <meta property="og:site_name" content="Dong">
+<meta property="og:description" content="Decision TreesConstructing decision trees&amp;emsp;     • Strategy: top-down learning using recursive divide-and-conquer process:&amp;emsp; &amp;emsp;         • First: Select the best attribute for root node and">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-07T02:26:10.000Z">
-<meta property="article:modified_time" content="2021-04-07T02:27:44.958Z">
+<meta property="article:modified_time" content="2021-04-08T09:22:16.154Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="ML">
 <meta name="twitter:card" content="summary">
@@ -44,7 +46,7 @@
   };
 </script>
 
-  <title>01006-5-Decision Trees | Dong</title>
+  <title>01006-5-Decision Trees & Ensemble methods | Dong</title>
   
 
 
@@ -177,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          01006-5-Decision Trees
+          01006-5-Decision Trees & Ensemble methods
         </h1>
 
         <div class="post-meta">
@@ -188,10 +190,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-04-07 10:26:10 / Modified: 10:27:44" itemprop="dateCreated datePublished" datetime="2021-04-07T10:26:10+08:00">2021-04-07</time>
+              <time title="Created: 2021-04-07 10:26:10" itemprop="dateCreated datePublished" datetime="2021-04-07T10:26:10+08:00">2021-04-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-08 17:22:16" itemprop="dateModified" datetime="2021-04-08T17:22:16+08:00">2021-04-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -220,7 +228,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Decision-Trees"><a href="#Decision-Trees" class="headerlink" title="Decision Trees"></a>Decision Trees</h1><h4 id="Constructing-decision-trees"><a href="#Constructing-decision-trees" class="headerlink" title="Constructing decision trees"></a>Constructing decision trees</h4><p>&emsp;     • Strategy: top-down learning using recursive divide-and-conquer process:<br>&emsp; &emsp;         • First: Select the best attribute for root node and create branch for each possible attribute value<br>&emsp; &emsp;         • Then: Split examples into subsets, one for each branch extending from the node<br>&emsp; &emsp;         • Finally: Repeat recursively for each branch, using only the examples that reach the branch<br>&emsp;     • Stop if all examples have the same class<br>&emsp; &emsp;         • Make a leaf node for this class</p>
+<p>Select the best attribute by:<br>&emsp;  <strong>Entropy</strong>:<br>&emsp;  &emsp;  $ H(S)=I(S)=-\sum_i P_i log_2 P_i$</p>
+<p>&emsp;  &emsp;  For binary tasks: $H(S)=I(p,(1-p))=-plog_2p-(1-p)log_2(1-p) \in [0,1]$</p>
+<p>&emsp;  <strong>Information Gain</strong>:<br>&emsp;  &emsp; Gain=T1-T2, T1 is the entropy of the set of examples S associated with the parent node <em>before</em> the split. T2 is the remaining entropy in S, <em>after</em> S is split  by the attribute.</p>
+<p>&emsp;  <strong>Gain ratio</strong>:<br>&emsp; &emsp;    It takes into account the number of branches when choosing an attribute and penalizes highly-branching attributes</p>
+<h4 id="Pruning-Decision-Trees"><a href="#Pruning-Decision-Trees" class="headerlink" title="Pruning Decision Trees"></a>Pruning Decision Trees</h4><p>&emsp;      Two main strategies<br>&emsp; &emsp;         • Pre-pruning - stop growing the tree earlier, before it reaches the point where it perfectly classifies the training data<br>&emsp; &emsp;         • Post-pruning – fully grow the tree, allowing it to perfectly cover the training data, and then prune it<br>&emsp; &emsp; &emsp;    • sub-tree replacement : Bottom-up<br>&emsp; &emsp; &emsp;    • sub-tree raising<br>&emsp; &emsp; &emsp;    • converting the tree to rules and then pruning them</p>
+<h4 id="Decision-trees-summary"><a href="#Decision-trees-summary" class="headerlink" title="Decision trees - summary"></a>Decision trees - summary</h4><p>&emsp;     • Very popular ML technique<br>&emsp;     • Top-down learning using recursive divide-and-conquer process<br>&emsp;     • Easy to implement<br>&emsp;     • Interpretable<br>&emsp; &emsp;         • The produced tree is easy to visualize and understand by non- experts and clients<br>&emsp; &emsp;         • Interpretability increases the trust in using the machine learning model in practice<br>&emsp;     • Uses pruning to prevent overfitting<br>&emsp;     • Numeric attributes are converted into nominal (binary split)<br>&emsp;     • Selecting the best attribute – information gain, gain ratio, others<br>&emsp;     • Variations: purity can be measured in different ways, e.g. CART uses Gini Index not entropy</p>
+<h1 id="Ensemble-methods"><a href="#Ensemble-methods" class="headerlink" title="Ensemble methods"></a>Ensemble methods</h1><h2 id="Motivation-for-creating-ensembles"><a href="#Motivation-for-creating-ensembles" class="headerlink" title="Motivation for creating ensembles"></a>Motivation for creating ensembles</h2><h4 id="When-ensembles-work-well"><a href="#When-ensembles-work-well" class="headerlink" title="When ensembles work well"></a>When ensembles work well</h4><p>&emsp;          • Conditions for an ensemble to perform better than a single classifier:<br>&emsp;  &emsp;                  • The base classifiers should be good enough, i.e. better than a random guessing ($\varepsilon<0.5 $ for binary classifiers)   
+&emsp;  &emsp;                  <br/>• The base classifiers are independent of each other<br>&emsp;          • Independence – in practice:<br>&emsp;  &emsp;                  • It is not possible to ensure total independence among the base classifiers<br>&emsp;  &emsp;                  • Good results have been achieved in ensemble methods when the base classifiers are slightly correlated</p>
+<h2 id="Ensemble-methods-1"><a href="#Ensemble-methods-1" class="headerlink" title="Ensemble methods"></a>Ensemble methods</h2><p>&emsp;      • Manipulating the <font color=green><strong>training data</strong></font> – creating multiple training sets by resampling the original data according to some sampling distribution and constructing a classifier for each training set (e.g. <em>Bagging</em> and <em>Boosting</em>)<br>&emsp;      • Manipulating the <font color=green><strong>attributes</strong></font> – using a subset of input features (e.g. <em>Random Forest</em> and <em>Random Subspace</em>)<br>&emsp;      • Manipulating the <font color=green><strong>class labels</strong></font> – will not be covered (e.g. error- correcting output coding)<br>&emsp;     • Manipulating the <font color=green><strong>learning algorithm</strong></font> – e.g. building a set of classifiers with different parameters</p>
+<h3 id="Bagging"><a href="#Bagging" class="headerlink" title="Bagging"></a>Bagging</h3><p>&emsp; Bagging is called <strong>Booststrap AGGregatING</strong><br>&emsp;  &emsp; • Given: a dataset D with n example (the original dataset)<br>&emsp;  &emsp; • <span style="border-bottom:1px  dashed red;">Bootstrap sample</span> D’ from D: contains also n examples, randomly chosen from D <span style="border-bottom:1px  dashed red;">with replacement</span> (i.e. some examples from D will appear more than once in D’, some will not appear at all)<br>&emsp; On average, 63% of the examples in D will also appear in D’ as it can be shown that the probability to choose an example is $(1-\frac{1}{n})^n = \frac{1}{e} \approx 0.369$</p>
+<p>&emsp; Pseudocode</p>
+<blockquote>
+<p>&emsp;  <u>Model generation</u><br>&emsp;&emsp;        Let n be the number of examples in the training data<br>&emsp;&emsp;        For each of M iterations:<br>&emsp;&emsp;&emsp;                Sample n examples with replacement from training data<br>&emsp;&emsp;&emsp;                Apply the learning algorithm to the sample<br>&emsp;&emsp;&emsp;                Store the resulting model<br>&emsp;    <u>Classification</u><br>&emsp;&emsp;        For each of the M models:<br>&emsp;&emsp;&emsp;            Predict class of testing example using model<br>&emsp;    Return class that has been predicted most often (majority vote)</p>
+</blockquote>
+<h3 id="Boosting"><a href="#Boosting" class="headerlink" title="Boosting"></a>Boosting</h3><h4 id="AdaBoost"><a href="#AdaBoost" class="headerlink" title="AdaBoost"></a>AdaBoost</h4><p>AdaBoost algorithm</p>
+<blockquote>
+<p>   D – given training set, m – number of training examples, M – number of models<br><u>Model generation</u><br>Assign equal weight $p_i$ to each training example i, e.g. $\frac{1}{m}$<br><br/> $p_i$ determines the probability of i to be selected in the training set for the next model<br><br/> For k=1 to M iterations: <font color=gray>//building M models</font><br>&emsp;             Create data subset $D_k$ from D with <em>m</em> ex. by sampling with replacement using p<br>&emsp;             Apply learning algorithm to $D_k$ and store resulting model<br><br/> &emsp;  Compute error $e_i$ of model on each training example i:<br><br/> &emsp; &emsp;              $e_i= 0$ if correctly classified, $e_i =1$ if incorrectly classified<br><br/> &emsp;   Calculate the weighed error of the model $e =sum(p_i *e_i$) over all m examples<br><br/> &emsp;  Update the weights:<br>&emsp; &emsp;               If example classified correctly by model, multiply its weight by $\frac{e}{1-e}$<br><br/> &emsp; &emsp;   Normalize weights (probabilities) of all examples so that they sum to 1<br>k=k+1<br><u>Classification</u><br>For each of the M models:<br>&emsp;       Predict class of testing example using model<br>Combine predictions using weighed vote, where the weight of each model depends on its accuracy on training set used to build the model</p>
+</blockquote>
+<h4 id="Gradient-Boosting"><a href="#Gradient-Boosting" class="headerlink" title="Gradient Boosting"></a>Gradient Boosting</h4><p>example<br>&emsp;         Create model 1: DT1 fit on training data (X,y), store model<br>&emsp;         To create model 2:<br>&emsp; &emsp;                 • Evaluate DT1 on training data, calculate error: y2 = y (actual value) - predicted value by DT1<br>&emsp; &emsp;                 • Create model 2: DT2 fit on (X,y2), store model<br>&emsp;        To create model 3:<br>&emsp; &emsp;                 • Evaluate DT2 on training data, calculate error: y3 = y2 - predicted value by DT2<br>&emsp; &emsp;                 • Create model 3: DT3 fit on (X,y3), store model<br>&emsp;         Now we have 3 decision trees. To make a prediction for a new example: sum the predictions of DT1, DT2 and DT3</p>
+<h4 id="comparison"><a href="#comparison" class="headerlink" title="comparison"></a>comparison</h4><p>&emsp;       Similarities<br>&emsp;  &emsp;                  • Use voting (for classification) and averaging (for prediction) to combine the outputs of the individual learners<br>&emsp;  &emsp;                  • Combine classifiers of the same type, typically trees – e.g. decision stumps or decision trees<br>&emsp;          Differences<br>&emsp;  &emsp;                  • Creating base classifiers:<br>&emsp;  &emsp;  &emsp;                          Bagging – separately<br>&emsp;  &emsp;  &emsp;                          Boosting – iteratively – the new ones are encouraged to become experts for the misclassified examples by the previous base learners (complementary expertise)<br>&emsp;  &emsp;                 • Combination method<br>&emsp;  &emsp;  &emsp;                          Bagging – equal weighs to all base learners<br>&emsp;  &emsp;  &emsp;                          Boosting – different weights - based on performance on training data</p>
+<h3 id="Random-Forest"><a href="#Random-Forest" class="headerlink" title="Random Forest"></a>Random Forest</h3><p>Random Forest algorithm</p>
+<blockquote>
+<p>n - number of training examples, m – number of all features, k – number of features to be used by each ensemble member (k &lt; m), M – number of ensemble members<br><u>Model generation</u><br>For each of M iteration:<br>&emsp;         Bagging – generate a bootstrap sample<br>&emsp;        Sample n instances with replacement from training data<br>&emsp;        Random feature selection for selecting the best attribute<br>&emsp;       Grow decision tree without pruning. At each step select the best feature to split on by considering <u>only k</u> randomly selected features and calculating information gain<br><u>Classification:</u><br>Apply the new example to each of the t decision trees starting from the root. Assign it to the class corresponding to the leaf. Combine the decisions of the individual trees by majority voting.</p>
+</blockquote>
+<h5 id="Random-Forests-Discussion"><a href="#Random-Forests-Discussion" class="headerlink" title="Random Forests Discussion"></a>Random Forests Discussion</h5><p>&emsp;     • Performance depends on<br>&emsp; &emsp;         • Accuracy of the individual trees (strength of the trees)<br>&emsp; &emsp;         • Correlation between the trees<br>&emsp;     • Ideally: accurate individual trees but less correlated<br>&emsp;     • Bagging and random feature selection are used to generate diversity and reduce the correlation between the trees<br>&emsp;     • As the number of features k increases, both the strength and correlation increase<br>&emsp;     • Random Forest typically outperforms a single decision tree<br>&emsp;     • Robust to overfitting<br>&emsp;     • Fast as only a subset of the features are considered<br>&emsp; </p>
+
     </div>
 
     
@@ -238,8 +272,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/04/07/01006-4-Naive-Bayes/" rel="prev" title="01006-4-Naive Bayes">
-      <i class="fa fa-chevron-left"></i> 01006-4-Naive Bayes
+    <a href="/2021/04/07/01006-4-Naive-Bayes/" rel="prev" title="01006-4-Naïve Bayes">
+      <i class="fa fa-chevron-left"></i> 01006-4-Naïve Bayes
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -300,6 +334,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Decision-Trees"><span class="nav-number">1.</span> <span class="nav-text">Decision Trees</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Constructing-decision-trees"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">Constructing decision trees</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Pruning-Decision-Trees"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">Pruning Decision Trees</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Decision-trees-summary"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">Decision trees - summary</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ensemble-methods"><span class="nav-number">2.</span> <span class="nav-text">Ensemble methods</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation-for-creating-ensembles"><span class="nav-number">2.1.</span> <span class="nav-text">Motivation for creating ensembles</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#When-ensembles-work-well"><span class="nav-number">2.1.0.1.</span> <span class="nav-text">When ensembles work well</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ensemble-methods-1"><span class="nav-number">2.2.</span> <span class="nav-text">Ensemble methods</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bagging"><span class="nav-number">2.2.1.</span> <span class="nav-text">Bagging</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Boosting"><span class="nav-number">2.2.2.</span> <span class="nav-text">Boosting</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#AdaBoost"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">AdaBoost</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Gradient-Boosting"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">Gradient Boosting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#comparison"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">comparison</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-Forest"><span class="nav-number">2.2.3.</span> <span class="nav-text">Random Forest</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Random-Forests-Discussion"><span class="nav-number">2.2.3.0.1.</span> <span class="nav-text">Random Forests Discussion</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -440,6 +475,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

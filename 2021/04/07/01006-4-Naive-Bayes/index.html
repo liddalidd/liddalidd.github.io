@@ -20,13 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="01006-4-Naive Bayes">
+  <meta name="description" content="Evaluating Machine Learning MethodsBayes theoremGiven a hypothesis H and evidence E for this hypothesis, then the probability of H given E is: P(H|E) &#x3D; \frac {P(E|H)P(H)}{P(E)}&amp;emsp; P(H|E): posterior">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01006-4-Naïve Bayes">
 <meta property="og:url" content="http://example.com/2021/04/07/01006-4-Naive-Bayes/index.html">
 <meta property="og:site_name" content="Dong">
+<meta property="og:description" content="Evaluating Machine Learning MethodsBayes theoremGiven a hypothesis H and evidence E for this hypothesis, then the probability of H given E is: P(H|E) &#x3D; \frac {P(E|H)P(H)}{P(E)}&amp;emsp; P(H|E): posterior">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-07T02:25:50.000Z">
-<meta property="article:modified_time" content="2021-04-07T02:27:48.852Z">
+<meta property="article:modified_time" content="2021-04-07T15:12:46.459Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="ML">
 <meta name="twitter:card" content="summary">
@@ -44,7 +46,7 @@
   };
 </script>
 
-  <title>01006-4-Naive Bayes | Dong</title>
+  <title>01006-4-Naïve Bayes | Dong</title>
   
 
 
@@ -177,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          01006-4-Naive Bayes
+          01006-4-Naïve Bayes
         </h1>
 
         <div class="post-meta">
@@ -190,7 +192,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-04-07 10:25:50 / Modified: 10:27:48" itemprop="dateCreated datePublished" datetime="2021-04-07T10:25:50+08:00">2021-04-07</time>
+              <time title="Created: 2021-04-07 10:25:50 / Modified: 23:12:46" itemprop="dateCreated datePublished" datetime="2021-04-07T10:25:50+08:00">2021-04-07</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -220,7 +222,47 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h1 id="Evaluating-Machine-Learning-Methods"><a href="#Evaluating-Machine-Learning-Methods" class="headerlink" title="Evaluating Machine Learning Methods"></a>Evaluating Machine Learning Methods</h1><h2 id="Bayes-theorem"><a href="#Bayes-theorem" class="headerlink" title="Bayes theorem"></a>Bayes theorem</h2><p>Given a hypothesis H and evidence E for this hypothesis, then the probability of H given E is: <script type="math/tex">P(H|E) = \frac {P(E|H)P(H)}{P(E)}</script><br>&emsp; P(H|E): posteriori probability or conditional probability<br>&emsp; P(H): prior probability</p>
+<h2 id="Naive-Bayes-algorithm"><a href="#Naive-Bayes-algorithm" class="headerlink" title="Naïve Bayes algorithm"></a>Naïve Bayes algorithm</h2><p>Two assumptions:<br>&emsp;  1) Independence – (the values of the) attributes are conditionally independent of each other, given the class (i.e. for each class value)<br>&emsp;  2) Equally importance – all attributes are equally important</p>
+<p>The “zero-frequency” problem:<br>&emsp;  an attribute value does not occur with every class value =&gt; P(E1|H) = 0<br>&emsp; Remedy: add 1 to the numerator and m to the denominator</p>
+<p>For missing values:<br>&emsp;        During classification:<br>&emsp;&emsp;                do not include this attribute<br>&emsp;        During training:<br>&emsp;&emsp;            do not include the missing values in the counts<br>&emsp;&emsp;            calculate the probabilities based on the actual number of training examples without missing values for each attribute</p>
+<p><strong>For Numeric  Attributes</strong>:<br>&emsp; Assume that the numeric attributes follow a <em>normal</em> (or Gaussian) distribution and use <em>probability density function</em></p>
+<script type="math/tex; mode=display">P(E=x|H) = \frac{1}{\sigma\sqrt{2\pi}} e ^{ -\frac{(x-\mu)^2}{2\sigma^2} }</script><h4 id="Naive-Bayes-discussion"><a href="#Naive-Bayes-discussion" class="headerlink" title="Naïve Bayes - discussion"></a>Naïve Bayes - discussion</h4><p>&emsp;      • Probabilities are calculated easily due to the independence assumption<br>&emsp;      • Fast - requires 1 scan of the training data to calculate all statistics for both nominal and continuous attributes<br>&emsp;      • In many cases outperforms more sophisticated learning methods<br>&emsp;      • Robust to isolated noise points – such points have only negligible impact on the conditional probabilities<br>&emsp;      • Correlated attributes reduce the power of Naïve Bayes - violation of the independence assumption<br>&emsp; &emsp;      • Solution: apply feature selection beforehand to identify and discard correlated (redundant) attributes<br>&emsp;      • Normal distribution assumption for numeric attributes - many features are not normally distributed – solutions:<br>&emsp; &emsp;      • Discretize the data first, i.e. numerical -&gt; nominal attributes<br>&emsp; &emsp;     • Use other probability density functions, e.g. Poisson, binomial, gamma</p>
+<h2 id="Evaluating-ML-models"><a href="#Evaluating-ML-models" class="headerlink" title="Evaluating ML models"></a>Evaluating ML models</h2><h3 id="Evaluation-procedures"><a href="#Evaluation-procedures" class="headerlink" title="Evaluation procedures"></a>Evaluation procedures</h3><h4 id="Holdout-method"><a href="#Holdout-method" class="headerlink" title="Holdout method"></a>Holdout method</h4><p>&emsp;      • Split the data randomly into 2 sets: training set and test set<br>&emsp; &emsp;   • typically 2/3 and 1/3<br>&emsp;      • Build the model using the training data<br>&emsp;      • Evaluate the model on the test data<br>&emsp; &emsp;   • calculate accuracy or other performance measures</p>
+<p> Sometimes we need to use a third set: <strong>validation set</strong><br> &emsp;      • The data is split into: training, validation and test set<br> &emsp;      • For example, some classification methods (decision trees, neural networks) operate in two stages:<br> &emsp;  &emsp;              • Stage 1: Build the classifier<br> &emsp;  &emsp;              • Stage 2: Tune its hyperparameters<br> &emsp;      • The test data can not be used for hyperparameter tuning<br> &emsp;      • Proper evaluation procedure - 3 datasets:<br> &emsp;  &emsp;              • 1) Training set - to build the classifier<br> &emsp;  &emsp;              • 2) Validation set - to tune its hyperparameters<br> &emsp;  &emsp;              • 3) Test set - to evaluate accuracy</p>
+<p>Impovements:<br>&emsp;     <strong>Stratification</strong>:<br>&emsp;  &emsp;             Ensures that each class is represented with approximately equal proportions in both data sets (training and testing)<br>&emsp;     <strong>Repeated holdout method</strong><br>&emsp;  &emsp;      The holdout method can be made more reliable by repeating the random split into training and test set several times and calculating average accuracy</p>
+<h4 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross validation"></a>Cross validation</h4><p>&emsp;      10-fold cross-validation – typically used<br>&emsp; &emsp;       Step 1: Split data into 10 sets set1,.., set10 of approximately equal size<br>&emsp; &emsp;       Step 2: A classifier is built 10 times. Each time the testing is on 1 set and the training is on the remaining 9 sets together<br>&emsp; &emsp;       Step 3: Calculate the cross validation accuracy = average (acc1, acc2,…acc10)</p>
+<p>10-fold cross-validation =&gt; Stratified 10-fold cross-validation =&gt; repeated stratified 10-fold cross-validation</p>
+<h4 id="Leave-one-out-cross-validation"><a href="#Leave-one-out-cross-validation" class="headerlink" title="Leave-one-out cross validation"></a>Leave-one-out cross validation</h4><p>&emsp;      • A special form of n-fold cross-validation<br>&emsp;  &emsp;          • Set the number of folds to the number of training examples<br>&emsp;  &emsp;          • =&gt; for n training examples, build classifier n times<br>&emsp;      • Advantages:<br>&emsp;  &emsp;          • Makes the best use of data - the greatest possible amount of data is used for training<br>&emsp;          • Deterministic procedure – no random sampling is involved - the same result will be obtained every time<br>&emsp;      • Disadvantage<br>&emsp;  &emsp;          • High computational cost, especially for large datasets</p>
+<h4 id="Cross-validation-for-parameter-tuning"><a href="#Cross-validation-for-parameter-tuning" class="headerlink" title="Cross-validation for parameter tuning"></a>Cross-validation for parameter tuning</h4><p>&emsp;  grid-search with cross-validation for parameter tuning</p>
+<blockquote>
+<p>&emsp;    Create the parameter grid (i.e. the parameter combinations)<br>&emsp;      Split the data into training set and test set<br>&emsp;      For each parameter combination:<br>&emsp; &emsp;         Train a k-NN classifier on the training data using 10-fold cross-validation<br>&emsp; &emsp;         Compute the cross-validation accuracy cv_acc<br>&emsp; &emsp;         If cv_acc &gt; best_cv_acc<br>&emsp; &emsp; &emsp;                 best_cv_acc = cv_acc<br>&emsp; &emsp; &emsp;                 best_parameters = current parameters<br>&emsp;          Rebuild the k-NN model using the whole training data and best_parameters<br>&emsp;          Evaluate it on the test data and report the results</p>
+</blockquote>
+<h3 id="Performance-measures"><a href="#Performance-measures" class="headerlink" title="Performance measures"></a>Performance measures</h3><h4 id="Confusion-matrix"><a href="#Confusion-matrix" class="headerlink" title="Confusion matrix"></a>Confusion matrix</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>examples</th>
+<th>assigned to class YES</th>
+<th>assigned to class YES</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>class YES</td>
+<td>TP</td>
+<td>FN</td>
+</tr>
+<tr>
+<td>class NO</td>
+<td>FP</td>
+<td>TN</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>$Acc=\frac{TP+TN}{TP+FN+FP+TN}$,&emsp;    &emsp;<br>$Precision ( P) =\frac{TP}{TP+FP}$,&emsp;    &emsp;<br>$Recall  (R)=\frac{TP}{TP+FN}$,&emsp;    &emsp;<br>$F1=\frac{2PR}{P+R}$</p>
+
     </div>
 
     
@@ -242,8 +284,8 @@
       <i class="fa fa-chevron-left"></i> 01006-3-Logistic Regression
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/04/07/01006-5-Decision-Trees/" rel="next" title="01006-5-Decision Trees">
-      01006-5-Decision Trees <i class="fa fa-chevron-right"></i>
+    <a href="/2021/04/07/01006-5-Decision-Trees/" rel="next" title="01006-5-Decision Trees & Ensemble methods">
+      01006-5-Decision Trees & Ensemble methods <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -303,6 +345,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Evaluating-Machine-Learning-Methods"><span class="nav-number">1.</span> <span class="nav-text">Evaluating Machine Learning Methods</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Bayes-theorem"><span class="nav-number">1.1.</span> <span class="nav-text">Bayes theorem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Naive-Bayes-algorithm"><span class="nav-number">1.2.</span> <span class="nav-text">Naïve Bayes algorithm</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Naive-Bayes-discussion"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">Naïve Bayes - discussion</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluating-ML-models"><span class="nav-number">1.3.</span> <span class="nav-text">Evaluating ML models</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Evaluation-procedures"><span class="nav-number">1.3.1.</span> <span class="nav-text">Evaluation procedures</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Holdout-method"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">Holdout method</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cross-validation"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">Cross validation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Leave-one-out-cross-validation"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">Leave-one-out cross validation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Cross-validation-for-parameter-tuning"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">Cross-validation for parameter tuning</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Performance-measures"><span class="nav-number">1.3.2.</span> <span class="nav-text">Performance measures</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Confusion-matrix"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">Confusion matrix</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -443,6 +486,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
