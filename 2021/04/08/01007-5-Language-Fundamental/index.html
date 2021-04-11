@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="&amp;emsp;      1. Sentiment Analysis&amp;emsp;      2. Language Fundamental&amp;emsp;      3. Text Preprocessing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="01007-5-Language Fundamental">
+<meta property="og:url" content="http://example.com/2021/04/08/01007-5-Language-Fundamental/index.html">
+<meta property="og:site_name" content="Dong">
+<meta property="og:description" content="&amp;emsp;      1. Sentiment Analysis&amp;emsp;      2. Language Fundamental&amp;emsp;      3. Text Preprocessing">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-04-08T09:26:39.000Z">
+<meta property="article:modified_time" content="2021-04-11T09:08:41.938Z">
+<meta property="article:author" content="Dong">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/04/08/01007-5-Language-Fundamental/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>01007-5-Language Fundamental | Dong</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Dong</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/04/08/01007-5-Language-Fundamental/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          01007-5-Language Fundamental
+        </h1>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-04-08 17:26:39" itemprop="dateCreated datePublished" datetime="2021-04-08T17:26:39+08:00">2021-04-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-11 17:08:41" itemprop="dateModified" datetime="2021-04-11T17:08:41+08:00">2021-04-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01007/" itemprop="url" rel="index"><span itemprop="name">01007</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>&emsp;      1. Sentiment Analysis<br>&emsp;      2. Language Fundamental<br>&emsp;      3. Text Preprocessing</p>
+<a id="more"></a>
+<h1 id="Language-Fundamental"><a href="#Language-Fundamental" class="headerlink" title="Language Fundamental"></a>Language Fundamental</h1><h2 id="Sentiment-Analysis"><a href="#Sentiment-Analysis" class="headerlink" title="Sentiment Analysis"></a>Sentiment Analysis</h2><p>Sentiment analysis = the detection of Attitudes<br>&emsp;  <u><strong>Main Factors</strong> </u><br>&emsp; &emsp;         • Target Object: an entity that can be a product, person, event, organisation, or topic  (e.g. iPhone)<br>&emsp; &emsp;         • Attribute: an object usually has two types of attributes<br>&emsp; &emsp; &emsp;         – Components (e.g. touch screen, battery)<br>&emsp; &emsp; &emsp;         – Properties (e.g. size, weight, colour, voice quality)<br>&emsp; &emsp; &emsp;         – Explicit and implicit attributes:<br>&emsp; &emsp; &emsp; &emsp;         • Explicit attributes: appearing in the attitude (e.g. “the battery life of this phone was not long”)<br>&emsp; &emsp; &emsp; &emsp;         • Implicit attributes: not appearing in the attitude (e.g. “this phone is too expensive” – the property price)<br>&emsp; &emsp;         • Attitude Holder: the person or organisation that expresses the opinion (e.g. my mother was mad with me)<br>&emsp; &emsp;         • Type of attitude: positive, negative, or neutral or set of types (e.g. happy)<br>&emsp; &emsp;         • Time: the time that expresses the opinion</p>
+<h2 id="Language-Fundamental-1"><a href="#Language-Fundamental-1" class="headerlink" title="Language Fundamental"></a>Language Fundamental</h2><p><strong>Phonolog</strong> / <strong>Morphology</strong> : the structure of words<br>&emsp;      A field of linguistics focused on the study of the forms and formation of words in a language<br>&emsp; &emsp;       Words in a language consist of one element or elements of meaning which are morphemes<br>&emsp; &emsp; &emsp;        – Morphemes are the pieces of words: bases, roots and affixes (pre-fix, suffix).</p>
+<p><strong>Syntax</strong>: the way words are used to form phrases<br>&emsp;   – It is part of English syntax that a determiner such as the will come before a noun, and also that determiners are obligatory with certain singular noun.</p>
+<p><strong>Semantics</strong>: Compositional and lexical semantics<br>&emsp;   – Compositional semantics: the construction of meaning based on syntax<br>&emsp;   – Lexical semantics: the meaning of individual words</p>
+<p><strong>Pragmatics</strong>: meaning in context<br>&emsp;   – Do you have the time? – means ‘can you tell me what time is it now?’</p>
+<h2 id="Text-Preprocessing"><a href="#Text-Preprocessing" class="headerlink" title="Text Preprocessing"></a>Text Preprocessing</h2><h4 id="Segmenting-tokenizing-words-in-running-text"><a href="#Segmenting-tokenizing-words-in-running-text" class="headerlink" title="Segmenting/tokenizing words in running text"></a>Segmenting/tokenizing words in running text</h4><p>&emsp;         <strong>Token</strong> = number of tokens<br>&emsp;         <strong>Type</strong> = vocabulary = set of types</p>
+<p>&emsp;  Tokenization: language issues</p>
+<h4 id="Normalizing-word-formats"><a href="#Normalizing-word-formats" class="headerlink" title="Normalizing word formats"></a>Normalizing word formats</h4><p><strong>Normalization</strong><br>&emsp;      • Need to “normalize” terms<br>&emsp;  &emsp;              • Information Retrieval: indexed text &amp; query terms must have same form.<br>&emsp;  &emsp;  &emsp;                  • We want to match U.S.A. and USA<br>&emsp;      • We implicitly define equivalence classes of terms<br>&emsp;  &emsp;              • e.g., deleting periods in a term<br>&emsp;      • Alternative: asymmetric expansion:<br>&emsp;  &emsp;              • Enter: window          Search: window, windows<br>&emsp;  &emsp;             • Enter: windows         Search: Windows, windows, window<br>&emsp;  &emsp;              • Enter: Windows        Search: Windows<br>&emsp;      • Potentially more powerful, but less efficient</p>
+<p><strong>Case Folding</strong><br>&emsp;          • Applications like IR: convert all letters to lower case<br>&emsp;  &emsp;                  • Since users tend to use lower case<br>&emsp;  &emsp;                  • Possible exception: upper case in mid-sentence?<br>&emsp;  &emsp;  &emsp;                          • e.g., General Motors<br>&emsp;  &emsp;  &emsp;                          • Fed vs. fed<br>&emsp;  &emsp;  &emsp;                          • SAIL vs. sail<br>&emsp;          • For sentiment analysis, Machine Translation, Information extraction<br>&emsp;  &emsp;                  • Case is helpful (US versus us is important)</p>
+<p><strong>Lemmatization</strong><br>&emsp;         • Reduce inflections or variant forms to base form<br>&emsp; &emsp;                 • am, are, is→be<br>&emsp; &emsp;                 • car, cars, car’s, cars’→car<br>&emsp;         • the boy’s cars are different colors→the boy car be different color<br>&emsp;         • Lemmatization: have to find correct dictionary headword form<br>&emsp; &emsp;                 Machine translation<br>&emsp; &emsp;    • Spanish quiero (‘I want’), quieres (‘you want’) same lemma as querer ‘want’</p>
+<p><strong>Stemming</strong><br>&emsp;          • Reduce terms to their stems in information retrieval<br>&emsp;          • Stemming is crude chopping of affixes<br>&emsp;  &emsp;                  • language dependent<br>&emsp;  &emsp;                  • e.g., automate(s), automatic, automation all reduced to automat.</p>
+<h4 id="Segmenting-sentences-in-running-text"><a href="#Segmenting-sentences-in-running-text" class="headerlink" title="Segmenting sentences in running text"></a>Segmenting sentences in running text</h4><p><strong>Sentence Segmentation</strong><br>&emsp;          • !, ? are relatively unambiguous<br>&emsp;          • Period “.” is quite ambiguous<br>&emsp;  &emsp;                  • Sentence boundary<br>&emsp;  &emsp;                  • Abbreviations like Inc. or Dr.<br>&emsp;  &emsp;                  • Numbers like .02% or 4.3<br>&emsp;          • Build a binary classifier<br>&emsp;  &emsp;                  • Looks at a “.”<br>&emsp;  &emsp;                  • Decides EndOfSentence/NotEndOfSentence<br>&emsp;  &emsp;                  • Classifiers: hand-written rules, regular expressions, or machine-learning</p>
+<p><strong>Regular Expressions</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/NLP/" rel="tag"># NLP</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/04/08/01007-4-Word-Classification-2/" rel="prev" title="01007-4-Word Classification-2">
+      <i class="fa fa-chevron-left"></i> 01007-4-Word Classification-2
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Language-Fundamental"><span class="nav-number">1.</span> <span class="nav-text">Language Fundamental</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sentiment-Analysis"><span class="nav-number">1.1.</span> <span class="nav-text">Sentiment Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Language-Fundamental-1"><span class="nav-number">1.2.</span> <span class="nav-text">Language Fundamental</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Text-Preprocessing"><span class="nav-number">1.3.</span> <span class="nav-text">Text Preprocessing</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Segmenting-tokenizing-words-in-running-text"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">Segmenting&#x2F;tokenizing words in running text</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Normalizing-word-formats"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">Normalizing word formats</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Segmenting-sentences-in-running-text"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">Segmenting sentences in running text</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Dong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liddalidd" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liddalidd" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liddaalidd@163.com" title="E-Mail → mailto:liddaalidd@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dong</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

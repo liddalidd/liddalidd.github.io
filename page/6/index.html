@@ -160,6 +160,569 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/01003-6-Database-Integrity/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/12/01003-6-Database-Integrity/" class="post-title-link" itemprop="url">01003-6:Database Integrity</a>
+        </h2>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-12 15:25:28" itemprop="dateCreated datePublished" datetime="2020-11-12T15:25:28+08:00">2020-11-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-01 18:54:07" itemprop="dateModified" datetime="2020-12-01T18:54:07+08:00">2020-12-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01003/" itemprop="url" rel="index"><span itemprop="name">01003</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Database-Integrity"><a href="#Database-Integrity" class="headerlink" title="Database Integrity"></a>Database Integrity</h1><h2 id="Overview-of-Integrity-Constraints"><a href="#Overview-of-Integrity-Constraints" class="headerlink" title="Overview of Integrity Constraints"></a>Overview of Integrity Constraints</h2><ul>
+<li>Integrity Constraint (IC):<br>  a condition that must be true for every instance of a database</li>
+</ul>
+<h2 id="Static-Integrity-Constraints"><a href="#Static-Integrity-Constraints" class="headerlink" title="Static Integrity Constraints"></a>Static Integrity Constraints</h2><h3 id="Domain-Constraints"><a href="#Domain-Constraints" class="headerlink" title="Domain Constraints"></a>Domain Constraints</h3><ul>
+<li><p>SQL DDL allows domains of attributes to be further restricted in the CREATE TABLE statement with the following clauses:</p>
+<ul>
+<li>DEFAULT default-value </li>
+<li>NOT NULL </li>
+<li>NULL  <h4 id="Domain-Check-Constraints"><a href="#Domain-Check-Constraints" class="headerlink" title="Domain Check Constraints"></a>Domain Check Constraints</h4>att-name sql-data-type <strong>CHECK</strong> (condition)<br>age INTEGER CHECK( age &gt;= 0 )</li>
+</ul>
+</li>
+<li><p>User-Defined Domains<br>  CREATE DOMAIN domain-name sql-data-type …</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">    CREATE DOMAIN Grade CHAR DEFAULT 􏱟P􏱟 CHECK(VALUE IN (􏱞F􏱟,􏱟P􏱟,􏱟C􏱟,􏱟D􏱟,􏱟H􏱟))</span><br><span class="line">    CREATE TABLE Student ( sid INTEGER NOT NULL,</span><br><span class="line">                        grade Grade,</span><br><span class="line">                        birthday DATE );</span><br><span class="line">    &#96;&#96;</span><br><span class="line"></span><br><span class="line">### Key &#x2F; Referential Constraints</span><br><span class="line">In SQL, we specify key constraints using the PRIMARY KEY and UNIQUE clauses:</span><br><span class="line"></span><br><span class="line">Enforcing Referential Integrity in SQL:</span><br><span class="line">- Defaultis NO ACTION (delete&#x2F;update is rejected)</span><br><span class="line">- CASCADE (also delete&#x2F;update all tuples that refer to deleted&#x2F;updated tuple)</span><br><span class="line">- SET NULL &#x2F; SET DEFAULT (sets foreign key value of referencing tuple)</span><br><span class="line"></span><br><span class="line">Deferring Constraint Checking:</span><br><span class="line">- NOT DEFERRABLE</span><br><span class="line">    The default. It means that every time a database modification occurs to tuples that a DBMS sees as being related, the constraint is checked immediately afterwards.</span><br><span class="line">- DEFERRABLE</span><br><span class="line">    Gives the option to wait until a transaction is complete before checking the constraint.</span><br><span class="line">- INITIALLY DEFERRED </span><br><span class="line">- INITIALLY IMMEDIATE</span><br><span class="line"></span><br><span class="line">### Semantic Integrity Constraints - Assertions</span><br><span class="line">a predicate expressing a condition that we wish the database always to satisfy.</span><br></pre></td></tr></table></figure>
+<p>CREATE ASSERTION assertion-name CHECK (condition)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## Dynamic Integrity Constraints </span><br><span class="line">### Triggers</span><br><span class="line">A trigger is a section of code that is executed automatically if specified modifications occur to the database AND a certain condition holds true.</span><br></pre></td></tr></table></figure>
+<p>CREATE TRIGGER gradeUpgrade<br>AFTER INSERT OR UPDATE ON Assessment<br>BEGIN<br>UPDATE Enrolled E<br>SET 􏰌􏰆ad􏰋=’P’<br>WHERE ( SELECT SUM(mark)</p>
+<pre><code>    FROM Assessment A
+   WHERE ...
+</code></pre><p>END;</p>
+</li>
+</ul>
+<p>```</p>
+<h4 id="Trigger-Granularity"><a href="#Trigger-Granularity" class="headerlink" title="Trigger Granularity"></a>Trigger Granularity</h4><ul>
+<li>Row-level granularity: change of a single row is an event (a single UPDATE statement might result in multiple events)</li>
+<li>Statement-level granularity: events are statements (a single UPDATE statement that changes multiple rows is a single event).</li>
+</ul>
+<h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h4><p>􏰱 Use BEFORE triggers</p>
+<ul>
+<li>For checking integrity constraints<br>􏰱 Use AFTER triggers</li>
+<li>For integrity maintenance and update propagation</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/01003-5-Complex-SQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/12/01003-5-Complex-SQL/" class="post-title-link" itemprop="url">01003-5:Complex SQL</a>
+        </h2>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-12 15:25:05" itemprop="dateCreated datePublished" datetime="2020-11-12T15:25:05+08:00">2020-11-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-01 12:36:06" itemprop="dateModified" datetime="2020-12-01T12:36:06+08:00">2020-12-01</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01003/" itemprop="url" rel="index"><span itemprop="name">01003</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Complex-SQL"><a href="#Complex-SQL" class="headerlink" title="Complex SQL"></a>Complex SQL</h1><h2 id="􏰱-Nested-Queries"><a href="#􏰱-Nested-Queries" class="headerlink" title="􏰱 Nested Queries"></a>􏰱 Nested Queries</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">SELECT name FROM Student NATURAL JOIN Enrolled WHERE uos_code&#x3D;􏱞COMP5138􏱟 INTERSECT</span><br><span class="line">SELECT name FROM Student NATURAL JOIN Enrolled WHERE uos_code&#x3D;􏱞COMP5318􏱟</span><br><span class="line"></span><br><span class="line">SELECT DISTINCT name FROM Student</span><br><span class="line">WHERE sid IN (</span><br><span class="line">            SELECT sid FROM Enrolled WHERE uos_code&#x3D;􏱞COMP5138􏱟 </span><br><span class="line">            INTERSECT</span><br><span class="line">            SELECT sid FROM Enrolled WHERE uos_code&#x3D;􏱞COMP5318􏱟</span><br><span class="line">            )      </span><br><span class="line"></span><br><span class="line">SELECT S.sid FROM Student S</span><br><span class="line">WHERE S.mark &gt;&#x3D; ALL ( SELECT mark </span><br><span class="line">                        FROM Student )</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>Noncorrelated subqueries:<ul>
+<li>Do not depend on data from the outer query </li>
+<li>Execute once for the entire outer query</li>
+</ul>
+</li>
+<li>Correlated subqueries:<ul>
+<li>Make use of data from the outer query</li>
+<li>Execute once for each row of the outer query</li>
+</ul>
+</li>
+</ul>
+<h2 id="Aggregation-and-Grouping"><a href="#Aggregation-and-Grouping" class="headerlink" title="Aggregation and Grouping"></a>Aggregation and Grouping</h2><h3 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h3><p>COUNT, SUM, AVG, MAX, MIN</p>
+<h3 id="Grouping"><a href="#Grouping" class="headerlink" title="Grouping"></a>Grouping</h3><pre><code>  SELECT target-list 
+    FROM relation-list 
+   WHERE qualification
+GROUP BY grouping-list 
+  HAVING group-qualification
+ORDER By target-list
+</code></pre><p>Query-Clause Evaluation Order:<br>FROM - WHERE - GROUP BY - HAVING - SELECT - ORDER BY</p>
+<h2 id="NULL-Values-and-Three-valued-Logic"><a href="#NULL-Values-and-Three-valued-Logic" class="headerlink" title="NULL Values and Three-valued Logic"></a>NULL Values and Three-valued Logic</h2><h3 id="NULL-Values"><a href="#NULL-Values" class="headerlink" title="NULL Values"></a>NULL Values</h3><p><strong>IS NULL</strong> or <strong>IS NOT NULL</strong> can be used to check for null values</p>
+<h2 id="Relational-Division"><a href="#Relational-Division" class="headerlink" title="Relational Division"></a>Relational Division</h2><h3 id="how-FOR-ALL-queries-are-efficiently-expressed-in-SQL"><a href="#how-FOR-ALL-queries-are-efficiently-expressed-in-SQL" class="headerlink" title="how FOR ALL queries are efficiently expressed in SQL"></a>how FOR ALL queries are efficiently expressed in SQL</h3><p>Relational Algebra: Division operator (R / S)</p>
+<ul>
+<li>We call the base set (S) the divisor (or denominator) </li>
+<li>and the candidate set (R) the dividend (or numerator)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/01003-4-Relation-Algebra-and-SQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/12/01003-4-Relation-Algebra-and-SQL/" class="post-title-link" itemprop="url">01003-4:Relation Algebra and SQL</a>
+        </h2>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-12 15:24:38" itemprop="dateCreated datePublished" datetime="2020-11-12T15:24:38+08:00">2020-11-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-30 22:35:24" itemprop="dateModified" datetime="2020-11-30T22:35:24+08:00">2020-11-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01003/" itemprop="url" rel="index"><span itemprop="name">01003</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Relation-Algebra-and-SQL"><a href="#Relation-Algebra-and-SQL" class="headerlink" title="Relation Algebra and SQL"></a>Relation Algebra and SQL</h1><h2 id="Relational-Algebra"><a href="#Relational-Algebra" class="headerlink" title="Relational Algebra"></a>Relational Algebra</h2><h3 id="Six-basic-operators"><a href="#Six-basic-operators" class="headerlink" title="Six basic operators"></a>Six basic operators</h3><p>1.Operators that remove parts of a relation</p>
+<ul>
+<li>Selection ($\sigma$) : selects a subset of rows from relation.</li>
+</ul>
+<p>$\sigma_{gender=’M’ \wedge country=’AUS’}(Student)$</p>
+<ul>
+<li>Projection ($\pi$) : deletes unwanted columns from relation. </li>
+</ul>
+<p>$\pi_{name}(\sigma_{gender=’M’ \wedge country=’AUS’}(Student))$</p>
+<p>2.Operators that combine tuples from two relations</p>
+<ul>
+<li><p>Cross-product (×):  combines every tuple from two relations.</p>
+</li>
+<li><p>Join ( $\bowtie$) :combines matching tuples from two relations.</p>
+<ul>
+<li><p>Conditional Join ($\bowtie_{\Theta}$) (<em>theta-join</em>)</p>
+<p>$R\bowtie_{\Theta}S=\sigma_{\Theta}(RXS)$</p>
+</li>
+<li>Natural Join ( $\bowtie$) </li>
+</ul>
+</li>
+</ul>
+<p>3.Set Operators</p>
+<ul>
+<li>Union ( $\cup$) : returns tuples in relation 1 or in relation 2.</li>
+<li>Intersection ( $\cap$) : returns tuples in relation 1, as well as in relation 2. </li>
+<li>Difference (- ) : returns tuples in relation 1, but not in relation 2.</li>
+</ul>
+<p>4.A schema-level ‘􏱞rename’ operator</p>
+<ul>
+<li><p>Rename ( $\rho$) : allows us to rename an attribute or a relation.</p>
+<p>  $\rho_{UOS(sid,title)}(UOfStudy)$</p>
+</li>
+</ul>
+<h2 id="Introduction-to-SQL"><a href="#Introduction-to-SQL" class="headerlink" title="Introduction to SQL"></a>Introduction to SQL</h2><h3 id="Basic-SQL-queries"><a href="#Basic-SQL-queries" class="headerlink" title="Basic SQL queries"></a>Basic SQL queries</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SELECT &lt;attributes&gt;</span><br><span class="line">FROM &lt;one or more tables&gt;</span><br><span class="line">WHERE &lt;conditions&gt;</span><br><span class="line"></span><br><span class="line">select DISTINCT s.country AS c</span><br><span class="line">from student s</span><br><span class="line">where s.point&gt;4 AND s.name LIKE &#39;SCO%&#39;</span><br><span class="line">order by name ASC&#x2F;DESC;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Join-queries"><a href="#Join-queries" class="headerlink" title="Join queries"></a>Join queries</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Cross-product:</span><br><span class="line">select *</span><br><span class="line">from Student,UOS;</span><br><span class="line"></span><br><span class="line">SELECT L.name, M.name</span><br><span class="line">  FROM Lecturer L, Lecturer M</span><br><span class="line"> WHERE L.manager &#x3D; M.empid;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="Inner-Join"><a href="#Inner-Join" class="headerlink" title="Inner Join"></a>Inner Join</h4><ul>
+<li>Theta Join: R <strong>JOIN</strong> S <strong>ON</strong><join condition></li>
+<li>Equi join:  R <strong>JOIN</strong> S <strong>USING</strong> ( <list of attributes>) </li>
+<li>Natural join: R <strong>NATURAL JOIN</strong> S</li>
+</ul>
+<h4 id="Outer-Join"><a href="#Outer-Join" class="headerlink" title="Outer Join"></a>Outer Join</h4><ul>
+<li>Left outer join: includes rows that would be found in an inner join as well as rows from the left table that don􏱟t have matches (padded 􏰕ith NULL values)</li>
+<li>Right outer join: includes rows that would be found in an inner join as well as rows from the right table that don􏱟t have matches (padded 􏰕ith NULL values)</li>
+<li>Full outer join: includes rows that would be found in an inner join as well as rows from the left table and ro􏰕s from the right table that don􏱟t have matches</li>
+</ul>
+<h3 id="Set-operations"><a href="#Set-operations" class="headerlink" title="Set operations"></a>Set operations</h3><ul>
+<li>Find all customer names that have a loan, an account, or both:<br>SELECT customer_name FROM depositor<br>UNION<br>SELECT customer_name FROM borrower</li>
+<li>Find all customer names that have both a loan and an account<br>SELECT customer_name FROM depositor<br>INTERSECT<br>SELECT customer_name FROM borrower</li>
+<li>Find all customer names that have an account but no loan<br>SELECT customer_name FROM depositor<br>EXCEPT<br>SELECT customer_name FROM borrower</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/01003-3-Relational-Data-Model/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/12/01003-3-Relational-Data-Model/" class="post-title-link" itemprop="url">01003-3:Relational Data Model</a>
+        </h2>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-12 15:24:13" itemprop="dateCreated datePublished" datetime="2020-11-12T15:24:13+08:00">2020-11-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-12-02 12:13:56" itemprop="dateModified" datetime="2020-12-02T12:13:56+08:00">2020-12-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01003/" itemprop="url" rel="index"><span itemprop="name">01003</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Relational-Data-Model"><a href="#Relational-Data-Model" class="headerlink" title="Relational Data Model"></a>Relational Data Model</h1><h2 id="Logical-Database-Design"><a href="#Logical-Database-Design" class="headerlink" title="Logical Database Design"></a>Logical Database Design</h2><h3 id="Relational-model-relation-and-schema"><a href="#Relational-model-relation-and-schema" class="headerlink" title="Relational model (relation and schema)"></a>Relational model (relation and schema)</h3><ul>
+<li>relation schema: name of relation, and name and data type (domain) of each attribute.</li>
+<li>relation instance: set of tuples (a table) for a schema</li>
+<li>NULL:<ul>
+<li>pro: using an ordinary value with special meaning does not always work</li>
+<li>con: causes complications in the definition of many operations</li>
+</ul>
+</li>
+</ul>
+<h3 id="Data-definition-language-DDL"><a href="#Data-definition-language-DDL" class="headerlink" title="Data definition language (DDL)"></a>Data definition language (DDL)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"># Create table</span><br><span class="line">CREATE TABLE Student (sid INTEGER,</span><br><span class="line">                    name VARCHAR(20), </span><br><span class="line">                    gender CHAR, </span><br><span class="line">                    date DATE</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># Deletion</span><br><span class="line">DROP TABLE Student;</span><br><span class="line">DELETE FROM Student WHERE name&#x3D;&#39;SS&#39;;</span><br><span class="line"></span><br><span class="line"># Change</span><br><span class="line">ALTER TABLE Student ADD COLUMN salary NUMERIC(2,2);</span><br><span class="line">ALTER TABLE Student DROP COLUMN sid CASCADE;</span><br><span class="line">ALTER TABLE Student ADD CONSTRAINT gender CHECK (gender in (&#39;M&#39;,&#39;F&#39;));</span><br><span class="line">ALTER TABLE Student DROP CONSTRAINT gender;</span><br><span class="line">ALTER TABLE Student ALTER COLUMN name TYPE VARCHAR(50);</span><br><span class="line">ALTER TABLE Student RENAME COLUMN date TO startDate;</span><br><span class="line"></span><br><span class="line"># Insert</span><br><span class="line">INSERT INTO Student VALUES (234,&#39;􏰷Smith&#39;);</span><br><span class="line">INSERT INTO Student (name, sid) VALUES (&#39;Smith&#39;,234);</span><br><span class="line"></span><br><span class="line"># Update</span><br><span class="line">UPDATE Student SET name&#x3D;&#39;GS&#39; WHERE sid &#x3D; 234;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Integrity-constraints"><a href="#Integrity-constraints" class="headerlink" title="Integrity constraints"></a>Integrity constraints</h3><p>facilities to specify a variety of rules to maintain the integrity of data when it is manipulated</p>
+<ul>
+<li><p>Key: the minimal set of attributes in a relation that can uniquely identify each row of that relation</p>
+</li>
+<li><p>Foreign keys (FK) are identifiers that enable a dependent relation to refer to its parent relation</p>
+</li>
+<li><p>Primary Key= Not Null + Unique</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FOREIGN KEY (sid) REFERENCES Student;</span><br><span class="line">CONSTRAINT Student_PK PRIMARY KEY (sid);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Mapping-E-R-diagrams-to-relations"><a href="#Mapping-E-R-diagrams-to-relations" class="headerlink" title="Mapping E-R diagrams to relations"></a>Mapping E-R diagrams to relations</h3><ul>
+<li>N:N Relationship:<br>  E1-R-E2 -&gt; E1+(E1_PK,E2_PK)+E2</li>
+<li>N:1/1:N Relationship:<br>  E1-R-En -&gt; E1+ En_E1_PK</li>
+<li>1:1 Relationship:<br>  E1-R-E2 -&gt; E1+ E2_E1_PK / E2+ E1_E2_PK</li>
+<li>Weak Entity Types:<br>  S-R-W -&gt; S + W_S_PK</li>
+<li>IsA-Hierarchy:<br>  Super-IsA-Sub -&gt; Super + Sub_Super_PK</li>
+<li>Aggregation:<br>  A-R-E -&gt; A + (A_PK,E_PK) + E</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/01003-2-Conceptual-Database-Design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Dong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dong">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/11/12/01003-2-Conceptual-Database-Design/" class="post-title-link" itemprop="url">01003-2:Conceptual Database Design</a>
+        </h2>
+
+        <div class="post-meta">
+          
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-11-12 15:23:39" itemprop="dateCreated datePublished" datetime="2020-11-12T15:23:39+08:00">2020-11-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-11-30 18:31:41" itemprop="dateModified" datetime="2020-11-30T18:31:41+08:00">2020-11-30</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/01003/" itemprop="url" rel="index"><span itemprop="name">01003</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Conceptual-Database-Design"><a href="#Conceptual-Database-Design" class="headerlink" title="Conceptual Database Design"></a>Conceptual Database Design</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong>Conceptual Database Design</strong>: A technique for understanding and capturing business information requirements graphically.</p>
+<h2 id="Entity-Relationship-Model"><a href="#Entity-Relationship-Model" class="headerlink" title="Entity Relationship Model"></a>Entity Relationship Model</h2><h3 id="Entity-and-Relationship-types-attributes"><a href="#Entity-and-Relationship-types-attributes" class="headerlink" title="Entity and Relationship types, attributes"></a>Entity and Relationship types, attributes</h3><ul>
+<li>Entity: an individual object, e.g., a person, place, object, event, or concept about which you want to gather and store data.</li>
+<li>Entity Type (also: entity set): a collection of entities that share common properties or characteristics</li>
+<li>Attribute: describes one aspect of an entity set</li>
+<li>Domain: possible values of an attribute<ul>
+<li>simple/composite/single-valued/multi-valued</li>
+</ul>
+</li>
+<li>Key: <em>minimal set</em> of attributes that uniquely identifies an entity in the set (several such <strong>Candidate Keys</strong> possible)</li>
+<li>Entity Schema: entity set name, attributes (+domains), PK</li>
+<li>Relationship: relates two or more entities</li>
+<li>Relationship Type (Relationship Set): set of similar relationships</li>
+<li>Relationship-Attribute: Relationships can also have additional properties</li>
+<li>Relationship-Role: Each participating entity can be named with an explicit role</li>
+<li>Relationship Type Schema: Relationship name, Role names (optional), Relationship attributes (+domains)</li>
+</ul>
+<h3 id="Key-participation-and-cardinality-constraints"><a href="#Key-participation-and-cardinality-constraints" class="headerlink" title="Key, participation and cardinality constraints"></a>Key, participation and cardinality constraints</h3><p>The combination of the primary keys of the participating entity sets forms a <strong>super key</strong>  (superset of a key) of a relationship.</p>
+<h4 id="Key-Constraints"><a href="#Key-Constraints" class="headerlink" title="Key Constraints"></a>Key Constraints</h4><ul>
+<li>N:1 relationship: <em>at most one</em><br>  Representation: $\rightarrow $</li>
+<li>1:N (total participation): <em>at least one</em><br>  Representation: thick line</li>
+<li>1:1 relationship: <em>exactly one</em><br>  Representation: thick $\rightarrow $</li>
+<li>N:N relationship: line</li>
+</ul>
+<h4 id="Cardinality-Constraints"><a href="#Cardinality-Constraints" class="headerlink" title="Cardinality Constraints"></a>Cardinality Constraints</h4><p>how often an entity of set E participates in R at least (minimum cardinality) and at most (maximum cardinality). ‘*’ as max</p>
+<h3 id="Weak-entities-IsA-hierarchies-aggregation"><a href="#Weak-entities-IsA-hierarchies-aggregation" class="headerlink" title="Weak entities, IsA hierarchies, aggregation"></a>Weak entities, IsA hierarchies, aggregation</h3><h4 id="Weak-entity-type"><a href="#Weak-entity-type" class="headerlink" title="Weak entity type"></a>Weak entity type</h4><ul>
+<li>An entity type that does not have a self-contained primary key, must:<ul>
+<li>relate to the identifying owner entity set via a one-to-many identifying relationship type from the identifying owner entity set to the weak entity set</li>
+<li>have total participation in the identifying relationship type</li>
+</ul>
+</li>
+<li>The <strong>discriminator</strong> (or <em>partial key</em>) of a weak entity type is the set of attributes that<br>distinguishes among all the entities of a weak entity type related to the same owning entity.</li>
+<li>The primary key of a weak entity type =  the primary key of the strong entity type(s) on which the weak entity type is existence dependent, plus the weak entity type􏰲􏰹 discriminator.</li>
+</ul>
+<h4 id="Enhanced-E-R-Model"><a href="#Enhanced-E-R-Model" class="headerlink" title="Enhanced E-R Model"></a>Enhanced E-R Model</h4><p>E-R Model + SPECIALIZATION/ GENERALIZATION +ABSTRACTIONS 􏰼􏰷(aggregation􏰲)</p>
+<h4 id="Generalisation-Specialisation-Inheritance"><a href="#Generalisation-Specialisation-Inheritance" class="headerlink" title="Generalisation/ Specialisation/ Inheritance"></a>Generalisation/ Specialisation/ Inheritance</h4><ul>
+<li>Attribute inheritance 􏰵 a lower-level (subclass) entity type inherits all the attributes and<br>relationship participations of its supertype.</li>
+</ul>
+<h5 id="Constraints-on-IsA-Hierarchies"><a href="#Constraints-on-IsA-Hierarchies" class="headerlink" title="Constraints on IsA Hierarchies:"></a>Constraints on IsA Hierarchies:</h5><ul>
+<li>Overlap Constraints<ul>
+<li>Disjoint: an entity can belong to only one lower-level entity set</li>
+<li>Overlapping: an entity can belong to more than one lower-level entity set</li>
+</ul>
+</li>
+<li>Covering Constraints<ul>
+<li>Total: an entity must belong to one of the lower-level entity sets (thick line)</li>
+<li>Partial (the default): an entity need not belong to one of the lower-level entity sets</li>
+</ul>
+</li>
+</ul>
+<h4 id="Aggregation"><a href="#Aggregation" class="headerlink" title="Aggregation"></a>Aggregation</h4><p>We can convey relationships between an entity set and another relationship type via <strong>aggregation</strong></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/11/01004-1-Introduction/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -766,20 +1329,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

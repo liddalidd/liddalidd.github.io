@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Rule-Based Algorithms: 1R and PRISMNearest Neighbor AlgorithmIdea:&amp;emsp;     • Remember all training examples&amp;emsp;     • To make a prediction for a new unlabelled example:&amp;emsp; &amp;emsp;        Find th">
+  <meta name="description" content="&amp;emsp; 1. kNN&amp;emsp; 2. 1R&amp;emsp; 3. PRISM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="01006-2-Nearest Neighbor Algorithm.md">
+<meta property="og:title" content="01006-2-Nearest Neighbor Algorithm">
 <meta property="og:url" content="http://example.com/2021/04/07/01006-2-Nearest-Neighbor-Algorithm/index.html">
 <meta property="og:site_name" content="Dong">
-<meta property="og:description" content="Rule-Based Algorithms: 1R and PRISMNearest Neighbor AlgorithmIdea:&amp;emsp;     • Remember all training examples&amp;emsp;     • To make a prediction for a new unlabelled example:&amp;emsp; &amp;emsp;        Find th">
+<meta property="og:description" content="&amp;emsp; 1. kNN&amp;emsp; 2. 1R&amp;emsp; 3. PRISM">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-07T02:24:22.000Z">
-<meta property="article:modified_time" content="2021-04-07T10:48:43.262Z">
+<meta property="article:modified_time" content="2021-04-08T09:46:45.546Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="ML">
 <meta name="twitter:card" content="summary">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>01006-2-Nearest Neighbor Algorithm.md | Dong</title>
+  <title>01006-2-Nearest Neighbor Algorithm | Dong</title>
   
 
 
@@ -179,7 +179,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          01006-2-Nearest Neighbor Algorithm.md
+          01006-2-Nearest Neighbor Algorithm
         </h1>
 
         <div class="post-meta">
@@ -190,10 +190,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-04-07 10:24:22 / Modified: 18:48:43" itemprop="dateCreated datePublished" datetime="2021-04-07T10:24:22+08:00">2021-04-07</time>
+              <time title="Created: 2021-04-07 10:24:22" itemprop="dateCreated datePublished" datetime="2021-04-07T10:24:22+08:00">2021-04-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-04-08 17:46:45" itemprop="dateModified" datetime="2021-04-08T17:46:45+08:00">2021-04-08</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -222,7 +228,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Rule-Based-Algorithms-1R-and-PRISM"><a href="#Rule-Based-Algorithms-1R-and-PRISM" class="headerlink" title="Rule-Based Algorithms: 1R and PRISM"></a>Rule-Based Algorithms: 1R and PRISM</h1><h2 id="Nearest-Neighbor-Algorithm"><a href="#Nearest-Neighbor-Algorithm" class="headerlink" title="Nearest Neighbor Algorithm"></a>Nearest Neighbor Algorithm</h2><p>Idea:<br>&emsp;     • Remember all training examples<br>&emsp;     • To make a prediction for a new unlabelled example:<br>&emsp; &emsp;        Find the nearest training example to it using a distance measure<br>&emsp; &emsp;    The class label of the nearest neighbor will be the predicted label for the new example</p>
+        <p>&emsp; 1. kNN<br>&emsp; 2. 1R<br>&emsp; 3. PRISM<br><a id="more"></a> </p>
+<h1 id="Rule-Based-Algorithms-1R-and-PRISM"><a href="#Rule-Based-Algorithms-1R-and-PRISM" class="headerlink" title="Rule-Based Algorithms: 1R and PRISM"></a>Rule-Based Algorithms: 1R and PRISM</h1><h2 id="Nearest-Neighbor-Algorithm"><a href="#Nearest-Neighbor-Algorithm" class="headerlink" title="Nearest Neighbor Algorithm"></a>Nearest Neighbor Algorithm</h2><p>Idea:<br>&emsp;     • Remember all training examples<br>&emsp;     • To make a prediction for a new unlabelled example:<br>&emsp; &emsp;        Find the nearest training example to it using a distance measure<br>&emsp; &emsp;    The class label of the nearest neighbor will be the predicted label for the new example</p>
 <h4 id="k-nearest-neighbor"><a href="#k-nearest-neighbor" class="headerlink" title="k-nearest neighbor"></a>k-nearest neighbor</h4><p>&emsp; • K-Nearest Neighbor is very sensitive to to the value of k<br>&emsp; &emsp;     • rule of thumb: $k \leq sqrt(n)$  </p>
 <p>&emsp; &emsp;     • commercial packages typically use k=10<br>&emsp; • Using more nearest neighbors increases the robustness to noisy examples<br>&emsp; • K-Nearest Neighbor can be used not only for classification, but also for regression<br>&emsp; &emsp;    • The prediction will be the average value of the class values (numerical) of the k nearest neighbors</p>
 <p><strong>Weighted nearest neighbor</strong>:<br>&emsp;  Idea: Closer neighbors should count more than distant neighbors</p>
@@ -258,8 +265,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/04/07/01006-1-Introduction/" rel="prev" title="01006-1-Introduction.md">
-      <i class="fa fa-chevron-left"></i> 01006-1-Introduction.md
+    <a href="/2021/04/07/01006-1-Introduction/" rel="prev" title="01006-1-Introduction">
+      <i class="fa fa-chevron-left"></i> 01006-1-Introduction
     </a></div>
       <div class="post-nav-item">
     <a href="/2021/04/07/01006-3-Logistic-Regression/" rel="next" title="01006-3-Logistic Regression">
@@ -337,20 +344,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

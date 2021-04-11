@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Decision TreesConstructing decision trees&amp;emsp;     • Strategy: top-down learning using recursive divide-and-conquer process:&amp;emsp; &amp;emsp;         • First: Select the best attribute for root node and">
+  <meta name="description" content="1.Decision Trees&amp;emsp; 1.1 ID3, C4.52.Ensemble methods&amp;emsp; 2.1 Bagging, Boosting (AdaBoost&#x2F;Gradient Boost), Random Forest">
 <meta property="og:type" content="article">
 <meta property="og:title" content="01006-5-Decision Trees &amp; Ensemble methods">
 <meta property="og:url" content="http://example.com/2021/04/07/01006-5-Decision-Trees/index.html">
 <meta property="og:site_name" content="Dong">
-<meta property="og:description" content="Decision TreesConstructing decision trees&amp;emsp;     • Strategy: top-down learning using recursive divide-and-conquer process:&amp;emsp; &amp;emsp;         • First: Select the best attribute for root node and">
+<meta property="og:description" content="1.Decision Trees&amp;emsp; 1.1 ID3, C4.52.Ensemble methods&amp;emsp; 2.1 Bagging, Boosting (AdaBoost&#x2F;Gradient Boost), Random Forest">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-07T02:26:10.000Z">
-<meta property="article:modified_time" content="2021-04-08T09:22:16.154Z">
+<meta property="article:modified_time" content="2021-04-08T09:35:47.177Z">
 <meta property="article:author" content="Dong">
 <meta property="article:tag" content="ML">
 <meta name="twitter:card" content="summary">
@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-04-08 17:22:16" itemprop="dateModified" datetime="2021-04-08T17:22:16+08:00">2021-04-08</time>
+                <time title="Modified: 2021-04-08 17:35:47" itemprop="dateModified" datetime="2021-04-08T17:35:47+08:00">2021-04-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,7 +228,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Decision-Trees"><a href="#Decision-Trees" class="headerlink" title="Decision Trees"></a>Decision Trees</h1><h4 id="Constructing-decision-trees"><a href="#Constructing-decision-trees" class="headerlink" title="Constructing decision trees"></a>Constructing decision trees</h4><p>&emsp;     • Strategy: top-down learning using recursive divide-and-conquer process:<br>&emsp; &emsp;         • First: Select the best attribute for root node and create branch for each possible attribute value<br>&emsp; &emsp;         • Then: Split examples into subsets, one for each branch extending from the node<br>&emsp; &emsp;         • Finally: Repeat recursively for each branch, using only the examples that reach the branch<br>&emsp;     • Stop if all examples have the same class<br>&emsp; &emsp;         • Make a leaf node for this class</p>
+        <p>1.Decision Trees<br>&emsp; 1.1 ID3, C4.5<br>2.Ensemble methods<br>&emsp; 2.1 Bagging, Boosting (AdaBoost/Gradient Boost), Random Forest<br><a id="more"></a> </p>
+<h1 id="Decision-Trees"><a href="#Decision-Trees" class="headerlink" title="Decision Trees"></a>Decision Trees</h1><h4 id="Constructing-decision-trees"><a href="#Constructing-decision-trees" class="headerlink" title="Constructing decision trees"></a>Constructing decision trees</h4><p>&emsp;     • Strategy: top-down learning using recursive divide-and-conquer process:<br>&emsp; &emsp;         • First: Select the best attribute for root node and create branch for each possible attribute value<br>&emsp; &emsp;         • Then: Split examples into subsets, one for each branch extending from the node<br>&emsp; &emsp;         • Finally: Repeat recursively for each branch, using only the examples that reach the branch<br>&emsp;     • Stop if all examples have the same class<br>&emsp; &emsp;         • Make a leaf node for this class</p>
 <p>Select the best attribute by:<br>&emsp;  <strong>Entropy</strong>:<br>&emsp;  &emsp;  $ H(S)=I(S)=-\sum_i P_i log_2 P_i$</p>
 <p>&emsp;  &emsp;  For binary tasks: $H(S)=I(p,(1-p))=-plog_2p-(1-p)log_2(1-p) \in [0,1]$</p>
 <p>&emsp;  <strong>Information Gain</strong>:<br>&emsp;  &emsp; Gain=T1-T2, T1 is the entropy of the set of examples S associated with the parent node <em>before</em> the split. T2 is the remaining entropy in S, <em>after</em> S is split  by the attribute.</p>
@@ -275,7 +276,10 @@
     <a href="/2021/04/07/01006-4-Naive-Bayes/" rel="prev" title="01006-4-Naïve Bayes">
       <i class="fa fa-chevron-left"></i> 01006-4-Naïve Bayes
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/04/08/01007-1-Introduction/" rel="next" title="01007-1-Introduction">
+      01007-1-Introduction <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -348,20 +352,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">60</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
